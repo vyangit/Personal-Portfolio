@@ -9,9 +9,6 @@
 # testing
 /coverage
 
-# typescript outputs
-/src/js
-
 # production
 /build
 
