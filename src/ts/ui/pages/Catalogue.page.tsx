@@ -1,8 +1,6 @@
-import React, { Component } from "react"
+import React from "react"
 
-class CataloguePage extends Component {
-    render() {
-        return <div>Catalogue Page</div>
-    }
+export default function CataloguePage {
+    return <div>Catalogue Page</div>
 }
 

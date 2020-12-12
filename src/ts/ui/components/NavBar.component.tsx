@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-export default function NavBarComponent() {
+export default function NavBarComponent(props) {
     const navBarStyles = useStyles()
     
-    return <div>
+    return (<div>
         <AppBar position='static'>
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu">
@@ -32,5 +32,5 @@ export default function NavBarComponent() {
                 <Button color="inherit">en-CA</Button>
             </Toolbar>
         </AppBar>
-    </div>
+    </div>);
 }
