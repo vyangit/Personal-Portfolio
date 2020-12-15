@@ -17,7 +17,13 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-export default function NavBarComponent(props) {
+interface Props {
+    onMenuItemClick: Function,
+    currMenuItem: string,
+    menuItems: string[]
+}
+
+export default function NavBarComponent(props: Props) {
     const navBarStyles = useStyles()
     
     return (<div>
