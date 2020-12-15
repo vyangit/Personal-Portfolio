@@ -7,14 +7,6 @@ import AppCataloguePage from './pages/Catalogue.page'
 import Box from '@material-ui/core/Box';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme:Theme) => 
-  createStyles({
-    mainContainer: {
-      flexGrow: 1
-    }
-  })
-);
-
 const pages = [
   'Home',
   'App Catalogue'
@@ -37,7 +29,7 @@ export default function App() {
   return (
     <div className="App">
       <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange}/>
-      <Box className="mainContainer">
+      <Box flexGrow={1} justifyContent="center" alignItems="center">
         {renderPage()}
       </Box>
       <FooterBarComponent/>
