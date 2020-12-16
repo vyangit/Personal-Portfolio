@@ -29,9 +29,7 @@ export default function App() {
   return (
     <div className="App">
       <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange}/>
-      <Box flexGrow={1} justifyContent="center" alignItems="center">
-        {renderPage()}
-      </Box>
+      {renderPage()}
       <FooterBarComponent/>
     </div>
   );
