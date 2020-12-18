@@ -11,8 +11,8 @@ const useStyles = makeStyles({
     },
     intro: {
         fontWeight: 'bold',
-        marginTop: '0.25rem',
-        marginBottom: '0.25rem'
+        marginTop: '0.5rem',
+        marginBottom: '0.5rem'
     },
     greetingLineIn: {
         backgroundColor:'black',
