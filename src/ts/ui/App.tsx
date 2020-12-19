@@ -13,10 +13,10 @@ const pages = [
 ]
 
 export default function App() {
-  const [currPage, setCurrPage] = useState(pages[0])
+  const [currPage, setCurrPage] = useState(pages[1])
 
   function handlePageChange(pageLabel: string) {
-    setCurrPage(pageLabel)
+    setCurrPage(pageLabel);
   }
 
   function renderPage() {
