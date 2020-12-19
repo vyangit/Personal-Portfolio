@@ -28,8 +28,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange}/>
-      {renderPage()}
+      <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange}/>    
+      <Box display="flex" flexDirection="row" flexGrow={1} alignItems="center">
+        {renderPage()}
+      </Box>
       <FooterBarComponent/>
     </div>
   );

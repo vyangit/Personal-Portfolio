@@ -30,26 +30,25 @@ export default function HomePage() {
     const classes = useStyles()
 
     return (
-    <Box display="flex" flexDirection="row" flexGrow={1} alignItems="center">
-            <Box 
-                display="flex" 
-                flexDirection="column" 
-                alignItems="flex-start" 
-                width="60rem" 
-                maxWidth="100vw"
-                padding="2rem" 
-                margin="auto">
-                <Box display="flex" alignItems="center">            
-                    <hr className={classes.greetingLineIn}/>
-                    <Typography className={classes.greeting} variant="h6">Hello</Typography>
-                </Box>
-                <Typography className={classes.intro} variant="h4" align="left">
-                    I'm Victor Yan
-                </Typography>
-                <Typography className={classes.gist} variant="subtitle1" align="left">
-                    A tech enthusiast and software developer located in Canada, looking for work across the globe and looking to share his own.
-                </Typography>
+        <Box 
+            display="flex" 
+            flexDirection="column" 
+            alignItems="flex-start" 
+            width="60rem" 
+            maxWidth="100vw"
+            padding="2rem" 
+            margin="auto">
+            <Box display="flex" alignItems="center">            
+                <hr className={classes.greetingLineIn}/>
+                <Typography className={classes.greeting} variant="h6">Hello</Typography>
             </Box>
-    </Box>)
+            <Typography className={classes.intro} variant="h4" align="left">
+                I'm Victor Yan
+            </Typography>
+            <Typography className={classes.gist} variant="subtitle1" align="left">
+                A tech enthusiast and software developer located in Canada, looking for work across the globe and looking to share his own.
+            </Typography>
+        </Box>
+        );
 }
 
