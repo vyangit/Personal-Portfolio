@@ -50,8 +50,8 @@ export default function CataloguePage() {
     const classes = useStyles();
     
     const [searchPhrase, setSearchPhrase] = useState('');
-    const [catalogueViewMode, setCatalogueViewMode] = useState('');
-    const [sortByMode, setSortByMode] = useState('');
+    const [catalogueViewMode, setCatalogueViewMode] = useState(catalogueViewModes[0]);
+    const [sortByMode, setSortByMode] = useState(sortByModes[0]);
     const [selectedFilterTags, setSelectedFilterTags] = useState([]);
     
     /**
@@ -100,8 +100,23 @@ export default function CataloguePage() {
                 <Grid item xs={3}>
                     <FormControl fullWidth>
                         <InputLabel>View as:</InputLabel>
-                        <Select value={catalogueViewMode} onChange={handleCatalogueViewChange}>
-                            <MenuItem>Placeholder</MenuItem>
+                        <Select 
+                            value={catalogueViewMode} 
+                            onChange={handleCatalogueViewChange}
+                            MenuProps={{
+                                getContentAnchorEl: null, 
+                                anchorOrigin: {
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                },
+                                transformOrigin:{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }
+                            }}>
+                            {catalogueViewModes.map(viewMode => {
+                                return <MenuItem value={viewMode}>{viewMode}</MenuItem>
+                            })}
                         </Select>
                     </FormControl>
                 </Grid>
@@ -109,8 +124,23 @@ export default function CataloguePage() {
                 <Grid item xs={3}>
                     <FormControl fullWidth>
                         <InputLabel>Sort by:</InputLabel>
-                        <Select value={sortByMode} onChange={handleSortByChange}>
-                            <MenuItem>Placeholder</MenuItem>
+                        <Select
+                            value={sortByMode}
+                            onChange={handleSortByChange}
+                            MenuProps={{
+                                getContentAnchorEl: null, 
+                                anchorOrigin: {
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                },
+                                transformOrigin:{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }
+                            }}>
+                            {sortByModes.map(sortByMode => {
+                                return <MenuItem value={sortByMode}>{sortByMode}</MenuItem>
+                            })}
                         </Select>
                     </FormControl>
                 </Grid>
@@ -152,40 +182,39 @@ export default function CataloguePage() {
 
     return (
         <React.Fragment>
-        <Box 
-            display="flex" 
-            flexDirection="column"
-            flexGrow={1}
-            padding="6vw"
-            maxWidth="100vw">
-        
-            <Typography gutterBottom variant="h4">
-                <Box fontWeight='fontWeightBold'>App Catalogue</Box>
-            </Typography>
-
-            <Grid
-                container
-                spacing={2}
-                justify="space-between">
-                
-                {renderFilter()}
-                <Grid item xs={showFilterAsFabFlag ? 12 : 3}>
-                    <TextField 
-                        fullWidth
-                        label="Keywords" 
-                        onChange={(event) => {setSearchPhrase(event.target.value)}}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton onClick={handleSearch}>
-                                        <SearchIcon/>
-                                    </IconButton>
-                                </InputAdornment>)}}
-                    />
-                </Grid>
-            </Grid>
+            <Box 
+                display="flex" 
+                flexDirection="column"
+                flexGrow={1}
+                padding="6vw"
+                maxWidth="100vw">
             
-        </Box>
+                <Typography gutterBottom variant="h4">
+                    <Box fontWeight='fontWeightBold'>App Catalogue</Box>
+                </Typography>
+
+                <Grid
+                    container
+                    spacing={2}
+                    justify="space-between">
+                    
+                    {renderFilter()}
+                    <Grid item xs={showFilterAsFabFlag ? 12 : 3}>
+                        <TextField 
+                            fullWidth
+                            label="Keywords" 
+                            onChange={(event) => {setSearchPhrase(event.target.value)}}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={handleSearch}>
+                                            <SearchIcon/>
+                                        </IconButton>
+                                    </InputAdornment>)}}
+                        />
+                    </Grid>
+                </Grid>
+            </Box>
             {renderFilterAsFab()}
         </React.Fragment>
     );
