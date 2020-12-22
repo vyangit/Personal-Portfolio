@@ -11,7 +11,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import SignatureLogo from '../../../assets/logo.svg';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
 interface Props {
     onMenuItemClick: Function,
@@ -43,6 +42,7 @@ export default function NavBarComponent(props: Props) {
 
     const handleMenuItemClick = (val: string) => {
         props.onMenuItemClick(val)
+        handleMenuClose()
     } 
 
     const renderMenuItems = () => {
@@ -58,7 +58,7 @@ export default function NavBarComponent(props: Props) {
     }
 
 
-    return (<div>
+    return (
         <AppBar position='static'>
             <Toolbar>
                 <Grid container>
@@ -92,5 +92,5 @@ export default function NavBarComponent(props: Props) {
                 </Grid>
             </Toolbar>
         </AppBar>
-    </div>);
+    );
 }

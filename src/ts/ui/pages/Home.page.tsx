@@ -36,7 +36,7 @@ export default function HomePage() {
             alignItems="flex-start" 
             width="60rem" 
             maxWidth="100vw"
-            padding="2rem" 
+            padding="7vw" 
             margin="auto">
             <Box display="flex" alignItems="center">            
                 <hr className={classes.greetingLineIn}/>

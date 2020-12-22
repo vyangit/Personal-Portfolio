@@ -5,7 +5,6 @@ import FooterBarComponent from './components/FooterBar.component';
 import HomePage from './pages/Home.page';
 import AppCataloguePage from './pages/Catalogue.page'
 import Box from '@material-ui/core/Box';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 const pages = [
   'Home',
@@ -29,7 +28,7 @@ export default function App() {
   return (
     <div className="App">
       <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange}/>    
-      <Box display="flex" flexDirection="row" flexGrow={1} alignItems="center">
+      <Box display="flex" flexDirection="row" flexGrow={1}>
         {renderPage()}
       </Box>
       <FooterBarComponent/>
