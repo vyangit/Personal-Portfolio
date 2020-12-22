@@ -28,13 +28,31 @@ const useStyles = makeStyles((theme:Theme) =>
         }
 }));
 
+const catalogueViewModes = [
+    'Catalogue',
+    'Grid',
+    'List',
+]
+
+const sortByModes = [
+    'Name',
+    'Newest to Oldest',
+    'Oldest to Newest'
+]
+
+const filterByTags = {
+    'Platform': ['Android', 'IOS', 'PC'],
+    'Pricing' ['Free to use', 'Single payment']
+    // 'Category': [''] TODO: Decide on categories
+}
+
 export default function CataloguePage() {
     const classes = useStyles();
     
     const [searchPhrase, setSearchPhrase] = useState('');
     const [catalogueViewMode, setCatalogueViewMode] = useState('');
     const [sortByMode, setSortByMode] = useState('');
-    const [filterByTags, setFilterByTags] = useState([]);
+    const [selectedFilterTags, setSelectedFilterTags] = useState([]);
     
     /**
      * Determines if the screen is less than the threshold width.
@@ -133,7 +151,7 @@ export default function CataloguePage() {
             display="flex" 
             flexDirection="column"
             flexGrow={1}
-            padding="7vw"
+            padding="6vw"
             maxWidth="100vw">
         
             <Typography gutterBottom variant="h4">
