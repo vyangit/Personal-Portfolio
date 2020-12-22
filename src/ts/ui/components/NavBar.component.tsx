@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import SignatureLogo from '../../../assets/logo.svg';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 interface Props {
     onMenuItemClick: Function,
@@ -34,7 +34,7 @@ export default function NavBarComponent(props: Props) {
 
     const handleMenuButtonClick = (event: React.MouseEvent<HTMLElement>) => {
         setMenuAnchorEl(event.currentTarget)
-    } 
+    }
 
     const handleMenuClose = () => {
         setMenuAnchorEl(null)
@@ -43,7 +43,7 @@ export default function NavBarComponent(props: Props) {
     const handleMenuItemClick = (val: string) => {
         props.onMenuItemClick(val)
         handleMenuClose()
-    } 
+    }
 
     const renderMenuItems = () => {
         let menuItemElements = [];
@@ -51,7 +51,7 @@ export default function NavBarComponent(props: Props) {
             menuItemElements.push(
                 <MenuItem onClick={() => handleMenuItemClick(item)}>{item}</MenuItem>
             )
-        
+
         }
 
         return menuItemElements;
@@ -64,7 +64,7 @@ export default function NavBarComponent(props: Props) {
                 <Grid container>
                     <Grid container item xs={2}>
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuButtonClick}>
-                            <MenuIcon/>
+                            <MenuIcon />
                         </IconButton>
                         <Menu
                             anchorEl={menuAnchorEl}
@@ -80,7 +80,7 @@ export default function NavBarComponent(props: Props) {
                             keepMounted
                             open={Boolean(menuAnchorEl)}
                             onClose={handleMenuClose}>
-                                {renderMenuItems()}
+                            {renderMenuItems()}
                         </Menu>
                     </Grid>
                     <Grid container item xs={8}>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../../styles/App.css';
 import NavBarComponent from './components/NavBar.component'
 import FooterBarComponent from './components/FooterBar.component';
@@ -20,18 +20,18 @@ export default function App() {
 
   function renderPage() {
     switch (currPage) {
-      case pages[0]: return <HomePage/>
-      case pages[1]: return <AppCataloguePage/>
+      case pages[0]: return <HomePage />
+      case pages[1]: return <AppCataloguePage />
     }
   }
 
   return (
     <div className="App">
-      <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange}/>    
+      <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange} />
       <Box display="flex" flexDirection="row" flexGrow={1}>
         {renderPage()}
       </Box>
-      <FooterBarComponent/>
+      <FooterBarComponent />
     </div>
   );
 }

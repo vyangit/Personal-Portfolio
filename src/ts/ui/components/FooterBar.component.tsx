@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import LinkedinIcon from '@material-ui/icons/LinkedIn';
 import GithubIcon from '@material-ui/icons/GitHub';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     icon: {
@@ -18,10 +18,10 @@ export default function FooterBarComponent() {
         <Box display="flex" justifyContent="space-between" alignItems="center" margin="2vw">
             <Box>
                 <IconButton size="small" className={classes.icon} href="https://www.linkedin.com/in/victorkyan/">
-                    <LinkedinIcon color="primary"/>
+                    <LinkedinIcon color="primary" />
                 </IconButton>
                 <IconButton size="small" className={classes.icon} href="https://github.com/vyangit">
-                    <GithubIcon color="primary"/>
+                    <GithubIcon color="primary" />
                 </IconButton>
             </Box>
             <Box>
