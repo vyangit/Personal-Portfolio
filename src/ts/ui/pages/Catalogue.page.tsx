@@ -40,10 +40,10 @@ const sortByModes = [
     'Oldest to Newest'
 ]
 
+// TODO: Decide on categories (i.e 'Category': [''] )
 const filterByTags = {
     'Platform': ['Android', 'IOS', 'PC'],
-    'Pricing' ['Free to use', 'Single payment']
-    // 'Category': [''] TODO: Decide on categories
+    'Pricing': ['Free to use', 'Single payment']
 }
 
 export default function CataloguePage() {
@@ -81,11 +81,16 @@ export default function CataloguePage() {
     }
 
     const handleCatalogueViewChange = (event: React.ChangeEvent<{value: unknown}>) => {
-        setCatalogueViewMode(event.target.value as string)
+        setCatalogueViewMode(event.target.value as string);
     }
 
     const handleSortByChange = (event: React.ChangeEvent<{value: unknown}>) => {
-        setSortByMode(event.target.value as string)
+        setSortByMode(event.target.value as string);
+    }
+
+    const filterResults = () => {
+        // TODO: Implement
+        console.log('filterResults')
     }
 
     const renderFilter = () => {
