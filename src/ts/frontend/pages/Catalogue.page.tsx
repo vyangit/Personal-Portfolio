@@ -55,7 +55,7 @@ const sortByModes = [
 
 // TODO: Decide on categories (i.e 'Category': [''] )
 const filterByTagGroups = new Map<string, string[]>();
-filterByTagGroups.set('Platform', ['Android', 'IOS', 'PC']);
+filterByTagGroups.set('Platform', ['Android', 'iOS', 'PC']);
 filterByTagGroups.set('Pricing', ['Free to use', 'Single payment', 'Subscription']);
     
 class FilterTagWithGroup {

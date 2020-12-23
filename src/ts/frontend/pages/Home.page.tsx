@@ -34,7 +34,7 @@ export default function HomePage() {
             display="flex" 
             flexDirection="column" 
             alignItems="flex-start" 
-            width="60rem" 
+            width="70vw" 
             maxWidth="100vw"
             padding="7vw" 
             margin="auto">
