@@ -54,11 +54,29 @@ const sortByModes = [
 ]
 
 // TODO: Decide on categories (i.e 'Category': [''] )
-const filterByTags = {
-    'Platform': ['Android', 'IOS', 'PC'],
-    'Pricing': ['Free to use', 'Single payment']
+const filterByTagGroups = new Map<string, string[]>();
+filterByTagGroups.set('Platform', ['Android', 'IOS', 'PC']);
+filterByTagGroups.set('Pricing', ['Free to use', 'Single payment', 'Subscription']);
+    
+class FilterTagWithGroup {
+    label: string;
+    group: string;
+
+    constructor(label: string, group: string) {
+        this.label = label;
+        this.group = group;
+    }
 }
 
+const createTagToTagGroupMap = (): Array<FilterTagWithGroup> => {
+    const tagsWithGroups = new Array<FilterTagWithGroup>();
+    filterByTagGroups.forEach((values: string[], key: string, map: Map<string, string[]>) => {
+        for (let value of values) {
+            tagsWithGroups.push(new FilterTagWithGroup(value, key));
+        }
+    });
+    return tagsWithGroups
+}
 
 /**
  * Determines if the screen is less than the threshold width.
@@ -71,6 +89,7 @@ const isScreenSmall = (): boolean => {
 
 export default function CataloguePage() {
     const classes = useStyles();
+    const filterOptions: Array<FilterTagWithGroup> = createTagToTagGroupMap()
 
     const [searchPhrase, setSearchPhrase] = useState('');
     const [catalogueViewMode, setCatalogueViewMode] = useState(catalogueViewModes[0]);
@@ -78,8 +97,6 @@ export default function CataloguePage() {
     const [selectedFilterTags, setSelectedFilterTags] = useState([]);
     const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
     const [openFabDialog, setOpenFabDialog] = useState(false);
-
-    const filterOptions: string[] = [];
 
     useEffect(() => {
         window.addEventListener('resize', handleResize);
@@ -177,7 +194,8 @@ export default function CataloguePage() {
                         <Autocomplete
                             multiple
                             options={filterOptions}
-                            getOptionLabel={(option) => option}
+                            groupBy={(option) => option.group}
+                            getOptionLabel={(option) => option.label}
                             defaultValue={[]}
                             renderInput={(params) => (
                                 <TextField
@@ -259,7 +277,8 @@ export default function CataloguePage() {
                             <Autocomplete
                                 multiple
                                 options={filterOptions}
-                                getOptionLabel={(option) => option}
+                                groupBy={(option) => option.group}
+                                getOptionLabel={(option) => option.label}
                                 defaultValue={[]}
                                 renderInput={(params) => (
                                     <TextField
@@ -293,7 +312,7 @@ export default function CataloguePage() {
                 display="flex"
                 flexDirection="column"
                 flexGrow={1}
-                padding="6vw"
+                padding="3rem"
                 maxWidth="100vw">
 
                 <Typography gutterBottom variant="h4">
