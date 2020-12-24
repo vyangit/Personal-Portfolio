@@ -344,7 +344,45 @@ export default function CataloguePage() {
 
     // In place sort
     const sortCatalogue = (catalogue: Array<CatalogueItemModel>): Array<CatalogueItemModel> => {
-        console.log('sortResults')
+        switch(sortByMode) {
+            case sortByModes[0]: { // Name
+                catalogue.sort((a, b) => {
+                    return a.title
+                    .toLocaleLowerCase()
+                    .localeCompare(b.title.toLocaleLowerCase())
+                });
+                break;
+            }
+            case sortByModes[1]: { // Newest to oldest
+                catalogue.sort((a, b) => {
+                    if (a.releaseDate == b.releaseDate) {
+                        return b.title
+                        .toLocaleLowerCase()
+                        .localeCompare(a.title.toLocaleLowerCase());
+                    } else if (a.releaseDate < b.releaseDate) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                });
+                break;
+            }
+            case sortByModes[2]: { // Oldest to newest
+                catalogue.sort((a, b) => {
+                    if (a.releaseDate == b.releaseDate) {
+                        return a.title
+                        .toLocaleLowerCase()
+                        .localeCompare(b.title.toLocaleLowerCase());
+                    } else if (a.releaseDate < b.releaseDate) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                });
+                break;
+            }
+        }
+            
         return catalogue
     }
 
