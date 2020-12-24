@@ -25,7 +25,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import SearchIcon from '@material-ui/icons/Search';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Icon } from '@material-ui/core';
+import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -94,14 +94,17 @@ const isScreenSmall = (): boolean => {
 export default function CataloguePage() {
     const classes = useStyles();
     const filterOptions: Array<FilterTagWithGroup> = createTagToTagGroupMap()
-    const catalogueItems: Array<CatalogueItemModel> | null = null;
 
+    // States
     const [searchPhrase, setSearchPhrase] = useState('');
     const [catalogueViewMode, setCatalogueViewMode] = useState(catalogueViewModes[0]);
     const [sortByMode, setSortByMode] = useState(sortByModes[0]);
     const [selectedFilterTags, setSelectedFilterTags] = useState([]);
     const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
     const [openFabDialog, setOpenFabDialog] = useState(false);
+
+    // Mutable block scope data
+    let catalogueItems: Array<CatalogueItemModel> | null = null;
 
     useEffect(() => {
         window.addEventListener('resize', handleResize);
@@ -307,8 +310,9 @@ export default function CataloguePage() {
     }
 
     const renderCatalogue = () => {
+        // TODO: Implement cache refresh with timestamp
         if (catalogueItems == null) {
-            // TODO: Implement fetch and cache
+            catalogueItems = CatalogueItemRepository.getAllCatalogueItems();
         }
 
         let ventedCatalogueItems = filterAndSortCatalogue(catalogueItems as unknown as Array<CatalogueItemModel>);
@@ -379,6 +383,12 @@ export default function CataloguePage() {
                         />
                     </Grid>
                 </Grid>
+                <Box
+                    display="flex"
+                    flexDirection="row"
+                    flexGrow={1}>
+                    {renderCatalogue()}
+                </Box>
             </Box>
             {renderFilterAsFab()}
         </React.Fragment>
