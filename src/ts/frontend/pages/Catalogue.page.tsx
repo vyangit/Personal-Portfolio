@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import CatalogueCatalogueViewComponent from '../components/CatalogueCatalogueView.component';
+import CatalogueListViewComponent from '../components/CatalogueListView.component';
+import CatalogueGridViewComponent from '../components/CatalogueGridView.component';
+import CatalogueItemModel from '../../models/CatalogueItem.model';
 
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -90,6 +94,7 @@ const isScreenSmall = (): boolean => {
 export default function CataloguePage() {
     const classes = useStyles();
     const filterOptions: Array<FilterTagWithGroup> = createTagToTagGroupMap()
+    const catalogueItems: Array<CatalogueItemModel> | null = null;
 
     const [searchPhrase, setSearchPhrase] = useState('');
     const [catalogueViewMode, setCatalogueViewMode] = useState(catalogueViewModes[0]);
@@ -131,11 +136,6 @@ export default function CataloguePage() {
         //TODO: Implement
         console.log('handleApplyDialogFilters');
         handleCloseFabDialog();
-    }
-
-    const filterResults = () => {
-        // TODO: Implement
-        console.log('filterResults')
     }
 
     const renderFilter = () => {
@@ -304,6 +304,44 @@ export default function CataloguePage() {
         } else {
             return null;
         }
+    }
+
+    const renderCatalogue = () => {
+        if (catalogueItems == null) {
+            // TODO: Implement fetch and cache
+        }
+
+        let ventedCatalogueItems = filterAndSortCatalogue(catalogueItems as unknown as Array<CatalogueItemModel>);
+
+        switch (catalogueViewMode) {
+            case catalogueViewModes[0]: { // Catalogue view
+                return <CatalogueCatalogueViewComponent items={ventedCatalogueItems}/>;
+            }
+            case catalogueViewModes[1]: { // Grid view
+                return <CatalogueGridViewComponent items={ventedCatalogueItems}/>;
+            }
+            case catalogueViewModes[2]: { // List View
+                return <CatalogueListViewComponent items={ventedCatalogueItems}/>;
+            }
+        }
+
+        return null;
+    }
+
+    const filterAndSortCatalogue = (catalogue: Array<CatalogueItemModel>): Array<CatalogueItemModel> => {
+        return sortCatalogue(filterCatalogue(catalogue));
+    }
+
+    const filterCatalogue = (catalogue: Array<CatalogueItemModel>): Array<CatalogueItemModel> => {
+        // TODO: Implement
+        console.log('filterResults')
+        return catalogue;
+    }
+
+    // In place sort
+    const sortCatalogue = (catalogue: Array<CatalogueItemModel>): Array<CatalogueItemModel> => {
+        console.log('sortResults')
+        return catalogue
     }
 
     return (

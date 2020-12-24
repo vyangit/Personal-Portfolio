@@ -1,4 +1,4 @@
-import React from 'react;
+import React from 'react';
 import CatalogueItemModel from '../../models/CatalogueItem.model'
 
 interface CatalogueCatalogueViewComponentProps {
