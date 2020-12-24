@@ -99,7 +99,7 @@ export default function CataloguePage() {
     const [searchPhrase, setSearchPhrase] = useState('');
     const [catalogueViewMode, setCatalogueViewMode] = useState(catalogueViewModes[0]);
     const [sortByMode, setSortByMode] = useState(sortByModes[0]);
-    const [selectedFilterTags, setSelectedFilterTags] = useState([]);
+    const [selectedFilterTags, setSelectedFilterTags] = useState(new Array<string>());
     const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
     const [openFabDialog, setOpenFabDialog] = useState(false);
 
@@ -114,9 +114,8 @@ export default function CataloguePage() {
         setShowFilterAsFabFlag(isScreenSmall());
     }
 
-    const handleSearch = () => {
-        //TODO
-        console.log(searchPhrase);
+    const handleSearch = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setSearchPhrase(event.target.value as string) 
     }
 
     const handleCatalogueViewChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -125,6 +124,10 @@ export default function CataloguePage() {
 
     const handleSortByChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setSortByMode(event.target.value as string);
+    }
+
+    const handleFilterTagsChange = (value: FilterTagWithGroup[]) => {
+        setSelectedFilterTags(value.map((tag) => tag.label));
     }
 
     const handleCloseFabDialog = () => {
@@ -199,7 +202,8 @@ export default function CataloguePage() {
                             options={filterOptions}
                             groupBy={(option) => option.group}
                             getOptionLabel={(option) => option.label}
-                            defaultValue={[]}
+                            getOptionSelected={(option, value) => option.label == value.label}
+                            onChange={(_, value) => {handleFilterTagsChange(value)}}
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
@@ -282,7 +286,7 @@ export default function CataloguePage() {
                                 options={filterOptions}
                                 groupBy={(option) => option.group}
                                 getOptionLabel={(option) => option.label}
-                                defaultValue={[]}
+                                getOptionSelected={(option, value) => option.label == value.label}
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
@@ -366,7 +370,7 @@ export default function CataloguePage() {
             }
             case sortByModes[1]: { // Newest to oldest
                 catalogue.sort((a, b) => {
-                    if (a.releaseDate == b.releaseDate) {
+                    if (a.releaseDate === b.releaseDate) {
                         return b.title
                             .toLocaleLowerCase()
                             .localeCompare(a.title.toLocaleLowerCase());
@@ -380,7 +384,7 @@ export default function CataloguePage() {
             }
             case sortByModes[2]: { // Oldest to newest
                 catalogue.sort((a, b) => {
-                    if (a.releaseDate == b.releaseDate) {
+                    if (a.releaseDate === b.releaseDate) {
                         return a.title
                             .toLocaleLowerCase()
                             .localeCompare(b.title.toLocaleLowerCase());
@@ -420,13 +424,11 @@ export default function CataloguePage() {
                         <TextField
                             fullWidth
                             label="Search"
-                            onChange={(event) => { setSearchPhrase(event.target.value) }}
+                            onChange={handleSearch}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
-                                        <IconButton onClick={handleSearch}>
-                                            <SearchIcon />
-                                        </IconButton>
+                                        <SearchIcon />
                                     </InputAdornment>)
                             }}
                         />
