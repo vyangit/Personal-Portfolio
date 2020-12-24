@@ -61,7 +61,7 @@ const sortByModes = [
 const filterByTagGroups = new Map<string, string[]>();
 filterByTagGroups.set('Platform', ['Android', 'iOS', 'PC']);
 filterByTagGroups.set('Pricing', ['Free to use', 'Single payment', 'Subscription']);
-    
+
 class FilterTagWithGroup {
     label: string;
     group: string;
@@ -319,13 +319,13 @@ export default function CataloguePage() {
 
         switch (catalogueViewMode) {
             case catalogueViewModes[0]: { // Catalogue view
-                return <CatalogueCatalogueViewComponent items={ventedCatalogueItems}/>;
+                return <CatalogueCatalogueViewComponent items={ventedCatalogueItems} />;
             }
             case catalogueViewModes[1]: { // Grid view
-                return <CatalogueGridViewComponent items={ventedCatalogueItems}/>;
+                return <CatalogueGridViewComponent items={ventedCatalogueItems} />;
             }
             case catalogueViewModes[2]: { // List View
-                return <CatalogueListViewComponent items={ventedCatalogueItems}/>;
+                return <CatalogueListViewComponent items={ventedCatalogueItems} />;
             }
         }
 
@@ -337,19 +337,30 @@ export default function CataloguePage() {
     }
 
     const filterCatalogue = (catalogue: Array<CatalogueItemModel>): Array<CatalogueItemModel> => {
-        // TODO: Implement
-        console.log('filterResults')
-        return catalogue;
+        let filteredCatalogue = new Array<CatalogueItemModel>();
+
+        for (let item of catalogue) {
+            let caseInsensitiveTitle = item.title.trim().toLocaleLowerCase();
+            let caseInsensitiveSearch = searchPhrase.trim().toLocaleLowerCase();
+            if (caseInsensitiveTitle.startsWith(caseInsensitiveSearch)) {
+                // TODO: Optimize filter tags check
+                if (selectedFilterTags.every(tag => item.filterTags.includes(tag))) {
+                    filteredCatalogue.push(item);
+                }
+            }
+        }
+
+        return filteredCatalogue;
     }
 
     // In place sort
     const sortCatalogue = (catalogue: Array<CatalogueItemModel>): Array<CatalogueItemModel> => {
-        switch(sortByMode) {
+        switch (sortByMode) {
             case sortByModes[0]: { // Name
                 catalogue.sort((a, b) => {
                     return a.title
-                    .toLocaleLowerCase()
-                    .localeCompare(b.title.toLocaleLowerCase())
+                        .toLocaleLowerCase()
+                        .localeCompare(b.title.toLocaleLowerCase())
                 });
                 break;
             }
@@ -357,8 +368,8 @@ export default function CataloguePage() {
                 catalogue.sort((a, b) => {
                     if (a.releaseDate == b.releaseDate) {
                         return b.title
-                        .toLocaleLowerCase()
-                        .localeCompare(a.title.toLocaleLowerCase());
+                            .toLocaleLowerCase()
+                            .localeCompare(a.title.toLocaleLowerCase());
                     } else if (a.releaseDate < b.releaseDate) {
                         return 1;
                     } else {
@@ -371,8 +382,8 @@ export default function CataloguePage() {
                 catalogue.sort((a, b) => {
                     if (a.releaseDate == b.releaseDate) {
                         return a.title
-                        .toLocaleLowerCase()
-                        .localeCompare(b.title.toLocaleLowerCase());
+                            .toLocaleLowerCase()
+                            .localeCompare(b.title.toLocaleLowerCase());
                     } else if (a.releaseDate < b.releaseDate) {
                         return -1;
                     } else {
@@ -382,7 +393,7 @@ export default function CataloguePage() {
                 break;
             }
         }
-            
+
         return catalogue
     }
 
@@ -408,7 +419,7 @@ export default function CataloguePage() {
                     <Grid item xs={showFilterAsFabFlag ? 12 : 3}>
                         <TextField
                             fullWidth
-                            label="Keywords"
+                            label="Search"
                             onChange={(event) => { setSearchPhrase(event.target.value) }}
                             InputProps={{
                                 endAdornment: (
