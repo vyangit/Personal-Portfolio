@@ -313,6 +313,13 @@ export default function CataloguePage() {
                                 groupBy={(option) => option.group}
                                 getOptionLabel={(option) => option.label}
                                 getOptionSelected={(option, value) => option.label == value.label}
+                                onChange={(_, value) => {
+                                    let filterTags: string[] = value.map((tag) => tag.label);
+                                    setFabDialogFilterTmpValues({
+                                        ...fabDialogFilterTmpValues,
+                                        selectedFilterTags: filterTags
+                                    })
+                                }}
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
