@@ -107,7 +107,7 @@ export default function CataloguePage() {
     const [searchPhrase, setSearchPhrase] = useState('');
     const [catalogueViewMode, setCatalogueViewMode] = useState(catalogueViewModes[0]);
     const [sortByMode, setSortByMode] = useState(sortByModes[0]);
-    const [selectedFilterTags, setSelectedFilterTags] = useState(new Array<string>());
+    const [selectedFilterTags, setSelectedFilterTags] = useState(new Array<FilterTagWithGroup>());
     const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
     const [openFabDialog, setOpenFabDialog] = useState(false);
     const [fabDialogFilterTmpValues, setFabDialogFilterTmpValues]= useState({
@@ -140,7 +140,7 @@ export default function CataloguePage() {
     }
 
     const handleFilterTagsChange = (value: FilterTagWithGroup[]) => {
-        setSelectedFilterTags(value.map((tag) => tag.label));
+        setSelectedFilterTags(value);
     }
 
     const handleCloseFabDialog = () => {
@@ -220,6 +220,7 @@ export default function CataloguePage() {
                     <Grid item xs={3}>
                         <Autocomplete
                             multiple
+                            defaultValue={selectedFilterTags}
                             options={filterOptions}
                             groupBy={(option) => option.group}
                             getOptionLabel={(option) => option.label}
@@ -285,6 +286,7 @@ export default function CataloguePage() {
                                 <FormControl fullWidth>
                                     <InputLabel>Sort by:</InputLabel>
                                     <Select
+                                        value={fabDialogFilterTmpValues.sortByMode}
                                         onChange={(e) => setFabDialogFilterTmpValues({
                                             ...fabDialogFilterTmpValues,
                                             sortByMode: e.target.value as string
@@ -309,15 +311,15 @@ export default function CataloguePage() {
 
                             <Autocomplete
                                 multiple
+                                defaultValue={fabDialogFilterTmpValues.selectedFilterTags}
                                 options={filterOptions}
                                 groupBy={(option) => option.group}
                                 getOptionLabel={(option) => option.label}
                                 getOptionSelected={(option, value) => option.label == value.label}
                                 onChange={(_, value) => {
-                                    let filterTags: string[] = value.map((tag) => tag.label);
                                     setFabDialogFilterTmpValues({
                                         ...fabDialogFilterTmpValues,
-                                        selectedFilterTags: filterTags
+                                        selectedFilterTags: value
                                     })
                                 }}
                                 renderInput={(params) => (
@@ -381,7 +383,7 @@ export default function CataloguePage() {
             let caseInsensitiveSearch = searchPhrase.trim().toLocaleLowerCase();
             if (caseInsensitiveTitle.startsWith(caseInsensitiveSearch)) {
                 // TODO: Optimize filter tags check
-                if (selectedFilterTags.every(tag => item.filterTags.includes(tag))) {
+                if (selectedFilterTags.every(tag => item.filterTags.includes(tag.label))) {
                     filteredCatalogue.push(item);
                 }
             }
