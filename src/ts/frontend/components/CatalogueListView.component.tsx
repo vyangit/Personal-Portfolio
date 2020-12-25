@@ -19,15 +19,17 @@ export default function CatalogueListViewComponent(props: CatalogueListViewCompo
         for (let i= 0; i < props.items.length; i++) {
             let item: CatalogueItemModel = props.items[i];
             catalogueListItems.push(
-            <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                    <Avatar variant="square" alt={item.title} src={item.thumbnailSrc}/>
-                </ListItemAvatar>
-                <ListItemText
-                    primary={item.title}
-                    secondary={item.description}
-                    />
-            </ListItem>)
+            <React.Fragment>
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        <Avatar variant="square" alt={item.title} src={item.thumbnailSrc}/>
+                    </ListItemAvatar>
+                    <ListItemText
+                        primary={item.title}
+                        secondary={item.description}/>
+                </ListItem>
+                {i != props.items.length-1 ? <Divider variant="middle"/>: null}
+            </React.Fragment>);
         }
         return catalogueListItems.length == 0 ? null : catalogueListItems
     }
