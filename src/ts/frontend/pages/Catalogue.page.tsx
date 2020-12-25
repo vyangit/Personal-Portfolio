@@ -26,6 +26,12 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
 
+interface FabDialogFilterValues {
+    catalogueViewMode: string;
+    sortByMode: string;
+    selectedFilterTags: string[];
+}
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         filterFab: {
@@ -104,6 +110,11 @@ export default function CataloguePage() {
     const [selectedFilterTags, setSelectedFilterTags] = useState(new Array<string>());
     const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
     const [openFabDialog, setOpenFabDialog] = useState(false);
+    const [fabDialogFilterTmpValues, setFabDialogFilterTmpValues]= useState({
+        catalogueViewMode: catalogueViewMode,
+        sortByMode: sortByMode,
+        selectedFilterTags: selectedFilterTags
+    });
 
     // Mutable block scope data
     let catalogueItems: Array<CatalogueItemModel> | null = null;
@@ -137,12 +148,20 @@ export default function CataloguePage() {
     }
 
     const handleOpenFabDialog = () => {
+        setFabDialogFilterTmpValues({
+            catalogueViewMode: catalogueViewMode,
+            sortByMode: sortByMode,
+            selectedFilterTags: [...selectedFilterTags]
+        });
+    
         setOpenFabDialog(true);
     }
 
     const handleApplyDialogFilters = () => {
-        //TODO: Implement
-        console.log('handleApplyDialogFilters');
+        setCatalogueViewMode(fabDialogFilterTmpValues['catalogueViewMode']);
+        setSortByMode(fabDialogFilterTmpValues['sortByMode']);
+        setSelectedFilterTags(fabDialogFilterTmpValues['selectedFilterTags']);
+
         handleCloseFabDialog();
     }
 
@@ -240,8 +259,11 @@ export default function CataloguePage() {
                             <FormControl fullWidth>
                                 <InputLabel>View as:</InputLabel>
                                 <Select
-                                    value={catalogueViewMode}
-                                    onChange={handleCatalogueViewChange}
+                                    value={fabDialogFilterTmpValues.catalogueViewMode}
+                                    onChange={(e) => setFabDialogFilterTmpValues({
+                                        ...fabDialogFilterTmpValues,
+                                        catalogueViewMode: (e.target.value as string)
+                                    })}
                                     MenuProps={{
                                         getContentAnchorEl: null,
                                         anchorOrigin: {
@@ -263,8 +285,10 @@ export default function CataloguePage() {
                                 <FormControl fullWidth>
                                     <InputLabel>Sort by:</InputLabel>
                                     <Select
-                                        value={sortByMode}
-                                        onChange={handleSortByChange}
+                                        onChange={(e) => setFabDialogFilterTmpValues({
+                                            ...fabDialogFilterTmpValues,
+                                            sortByMode: e.target.value as string
+                                        })}
                                         MenuProps={{
                                             getContentAnchorEl: null,
                                             anchorOrigin: {
