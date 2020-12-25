@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme: Theme) =>
         boxY: {
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(1)
+        },
+        bottomGutter: {
+            marginBottom: theme.spacing(2)
         }
     }));
 
@@ -412,27 +415,28 @@ export default function CataloguePage() {
                 <Typography gutterBottom variant="h4">
                     <Box fontWeight='fontWeightBold'>App Catalogue</Box>
                 </Typography>
+                <Box className={classes.bottomGutter}>
+                    <Grid
+                        container
+                        spacing={2}
+                        justify="space-between">
 
-                <Grid
-                    container
-                    spacing={2}
-                    justify="space-between">
-
-                    {renderFilter()}
-                    <Grid item xs={showFilterAsFabFlag ? 12 : 3}>
-                        <TextField
-                            fullWidth
-                            label="Search"
-                            onChange={handleSearch}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <SearchIcon />
-                                    </InputAdornment>)
-                            }}
-                        />
+                        {renderFilter()}
+                        <Grid item xs={showFilterAsFabFlag ? 12 : 3}>
+                            <TextField
+                                fullWidth
+                                label="Search"
+                                onChange={handleSearch}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <SearchIcon />
+                                        </InputAdornment>)
+                                }}
+                            />
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Box>
                 <Box
                     display="flex"
                     flexDirection="row"
