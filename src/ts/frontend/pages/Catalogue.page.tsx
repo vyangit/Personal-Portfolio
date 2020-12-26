@@ -26,12 +26,6 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
 
-interface FabDialogFilterValues {
-    catalogueViewMode: string;
-    sortByMode: string;
-    selectedFilterTags: string[];
-}
-
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         filterFab: {
@@ -58,9 +52,8 @@ const useStyles = makeStyles((theme: Theme) =>
     }));
 
 const catalogueViewModes = [
-    'Catalogue',
     'Grid',
-    'List',
+    'List'
 ]
 
 const sortByModes = [
@@ -361,13 +354,10 @@ export default function CataloguePage() {
         let ventedCatalogueItems = filterAndSortCatalogue(catalogueItems as unknown as Array<CatalogueItemModel>);
 
         switch (catalogueViewMode) {
-            case catalogueViewModes[0]: { // Catalogue view
-                return <CatalogueCatalogueViewComponent items={ventedCatalogueItems} />;
-            }
-            case catalogueViewModes[1]: { // Grid view
+            case catalogueViewModes[0]: { // Grid view
                 return <CatalogueGridViewComponent items={ventedCatalogueItems} />;
             }
-            case catalogueViewModes[2]: { // List View
+            case catalogueViewModes[1]: { // List View
                 return <CatalogueListViewComponent items={ventedCatalogueItems} />;
             }
         }
