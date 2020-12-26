@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         bottomGutter: {
             marginBottom: theme.spacing(2)
+        },
+        overflow: {
+            overflowY: 'scroll',
+            overflowX: 'hidden'
         }
     }));
 
@@ -470,10 +474,7 @@ export default function CataloguePage() {
                         </Grid>
                     </Grid>
                 </Box>
-                <Box
-                    display="flex"
-                    flexDirection="row"
-                    flexGrow={1}>
+                <Box flexDirection="row" flexGrow={1} className={classes.overflow}>
                     {renderCatalogue()}
                 </Box>
             </Box>
