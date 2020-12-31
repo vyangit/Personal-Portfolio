@@ -29,6 +29,8 @@ import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.re
 import AndroidIcon from '@material-ui/icons/Android';
 import AppleIcon from '@material-ui/icons/Apple';
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+import WebIcon from '@material-ui/icons/Web';
+import CodeIcon from '@material-ui/icons/Code';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -66,9 +68,17 @@ const sortByModes = [
     'Oldest to Newest'
 ]
 
+const appDeviceDescriptorIcons = {
+    'Android': AndroidIcon,
+    'iOS': AppleIcon,
+    'PC': DesktopWindowsIcon,
+    'Web': WebIcon,
+    'API': CodeIcon
+}
+
 // TODO: Decide on categories (i.e 'Category': [''] )
 const filterByTagGroups = new Map<string, string[]>();
-filterByTagGroups.set('Platform', ['Android', 'iOS', 'PC']);
+filterByTagGroups.set('Platform', ['Android', 'iOS', 'PC', 'Web', 'API']);
 filterByTagGroups.set('Pricing', ['Free to use', 'Single payment', 'Subscription']);
 
 class FilterTagWithGroup {
