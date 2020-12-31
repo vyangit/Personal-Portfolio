@@ -26,6 +26,10 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
 
+import AndroidIcon from '@material-ui/icons/Android';
+import AppleIcon from '@material-ui/icons/Apple';
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         filterFab: {
