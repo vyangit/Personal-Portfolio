@@ -10,24 +10,28 @@ import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import SignatureLogo from '../../../assets/logo.svg';
+import DarkModeOnIcon from '@material-ui/icons/Brightness5';
+import DarkModeOffIcon from '@material-ui/icons/Brightness7';
 import { makeStyles } from '@material-ui/core/styles';
 
-interface Props {
+interface NavBarProps {
     onMenuItemClick: Function,
     currMenuItem: string,
-    menuItems: string[]
+    menuItems: string[],
+    isDarkModeOn?: boolean;
+    toggleDarkMode? : Function
 }
 
 const useStyles = makeStyles({
     signatureLogo: {
         margin: 'auto'
     },
-    langBtn: {
-        marginLeft: 'auto'
+    rightButton: {
+        marginLeft: '4px'
     }
 });
 
-export default function NavBarComponent(props: Props) {
+export default function NavBarComponent(props: NavBarProps) {
     const navBarClasses = useStyles(props);
 
     const [menuAnchorEl, setMenuAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -45,6 +49,12 @@ export default function NavBarComponent(props: Props) {
         handleMenuClose()
     }
 
+    const handleDarkModeToggle = () => {
+        if (props.toggleDarkMode != undefined) {
+            props.toggleDarkMode(!props.isDarkModeOn);
+        }
+    }
+
     const renderMenuItems = () => {
         let menuItemElements = [];
         for (let item of props.menuItems) {
@@ -56,7 +66,6 @@ export default function NavBarComponent(props: Props) {
 
         return menuItemElements;
     }
-
 
     return (
         <AppBar position='static'>
@@ -86,8 +95,15 @@ export default function NavBarComponent(props: Props) {
                     <Grid container item xs={8}>
                         <img src={SignatureLogo} className={navBarClasses.signatureLogo} height="60" alt="Signature Logo"></img>
                     </Grid>
-                    <Grid container item xs={2}>
-                        <Button color="inherit" className={navBarClasses.langBtn}>en-CA</Button>
+                    <Grid container item xs={2} justify='flex-end'>
+                        <IconButton color="inherit" className={navBarClasses.rightButton}>
+                            {
+                            props.isDarkModeOn ? 
+                                <DarkModeOnIcon onClick={handleDarkModeToggle}/> : 
+                                <DarkModeOffIcon onClick={handleDarkModeToggle}/>
+                            }
+                        </IconButton>
+                        <Button color="inherit" className={navBarClasses.rightButton}>en-CA</Button>
                     </Grid>
                 </Grid>
             </Toolbar>

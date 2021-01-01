@@ -12,7 +12,8 @@ const pages = [
 ]
 
 export default function App() {
-  const [currPage, setCurrPage] = useState(pages[0])
+  const [isDarkModeOn, setIsDarkModeOn] = useState(false); 
+  const [currPage, setCurrPage] = useState(pages[0]);
 
   function handlePageChange(pageLabel: string) {
     setCurrPage(pageLabel);
@@ -27,7 +28,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <NavBarComponent currMenuItem={currPage} menuItems={pages} onMenuItemClick={handlePageChange} />
+      <NavBarComponent 
+        currMenuItem={currPage} 
+        menuItems={pages} 
+        onMenuItemClick={handlePageChange}
+        isDarkModeOn={isDarkModeOn}
+        toggleDarkMode={setIsDarkModeOn} />
       <Box display="flex" flexDirection="row" flexGrow={1} overflow="hidden">
         {renderPage()}
       </Box>
