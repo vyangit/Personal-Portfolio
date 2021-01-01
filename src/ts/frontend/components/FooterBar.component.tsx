@@ -17,10 +17,10 @@ export default function FooterBarComponent() {
     return (
         <Box display="flex" justifyContent="space-between" alignItems="center" margin="2vw">
             <Box>
-                <IconButton size="small" className={classes.icon} href="https://www.linkedin.com/in/victorkyan/">
+                <IconButton size="small" className={classes.icon} href="https://www.linkedin.com/in/victorkyan/" target="_blank" rel="noopener noreferrer">
                     <LinkedinIcon color="primary" />
                 </IconButton>
-                <IconButton size="small" className={classes.icon} href="https://github.com/vyangit">
+                <IconButton size="small" className={classes.icon} href="https://github.com/vyangit" target="_blank" rel="noopener noreferrer">
                     <GithubIcon color="primary" />
                 </IconButton>
             </Box>
