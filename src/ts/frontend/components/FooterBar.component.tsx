@@ -3,19 +3,26 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import LinkedinIcon from '@material-ui/icons/LinkedIn';
 import GithubIcon from '@material-ui/icons/GitHub';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    footerContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        margin: theme.spacing(3),
+        marginTop: 0
+    },
     icon: {
-        margin: '4px'
+        margin: '4px',
     }
-});
+}));
 
 export default function FooterBarComponent() {
     const classes = useStyles();
 
     return (
-        <Box display="flex" justifyContent="space-between" alignItems="center" margin="2vw">
+        <Box className={classes.footerContainer}>
             <Box>
                 <IconButton size="small" className={classes.icon} href="https://www.linkedin.com/in/victorkyan/" target="_blank" rel="noopener noreferrer">
                     <LinkedinIcon color="primary" />

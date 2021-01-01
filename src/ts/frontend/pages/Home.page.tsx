@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
     gist: {
         width: '30rem',
-        maxWidth: '80vw'
+        maxWidth: '70vw'
     }
 })
 
@@ -33,9 +33,7 @@ export default function HomePage() {
             display="flex" 
             flexDirection="column" 
             alignItems="flex-start" 
-            width="70vw" 
-            maxWidth="100vw"
-            padding="7vw" 
+            width="70vw"
             margin="auto">
             <Box display="flex" alignItems="center">            
                 <hr className={classes.greetingLineIn}/>

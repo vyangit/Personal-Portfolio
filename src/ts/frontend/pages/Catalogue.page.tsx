@@ -29,6 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
         bottomGutter: {
             marginBottom: theme.spacing(2)
         },
+        catalogueContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+            flexGrow: 1,
+            padding: theme.spacing(2.5),
+            maxWidth: '100vw'
+        },
         overflow: {
             overflowY: 'scroll',
             overflowX: 'hidden'
@@ -182,12 +189,7 @@ export default function CataloguePage() {
 
     return (
         <React.Fragment>
-            <Box
-                display="flex"
-                flexDirection="column"
-                flexGrow={1}
-                padding="3rem"
-                maxWidth="100vw">
+            <Box className={classes.catalogueContainer}>
 
                 <Typography gutterBottom variant="h4">
                     <Box fontWeight='fontWeightBold'>App Catalogue</Box>
