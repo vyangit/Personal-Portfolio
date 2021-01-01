@@ -8,7 +8,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import { makeStyles } from '@material-ui/core/styles'
 
 interface CatalogueGridViewComponentProps {
-    items: Array<CatalogueItemModel>
+    items: Array<CatalogueItemModel>;
+    onItemSelected?: Function;
 }
 
 const gridItemWidth = 300;
@@ -29,13 +30,19 @@ const useStyles = makeStyles({
 export default function CatalogueGridViewComponent(props: CatalogueGridViewComponentProps) {
     const classes = useStyles();
 
+    const handleOnItemSelected = (item: CatalogueItemModel) => {
+        if (props.onItemSelected !== undefined) {
+            props.onItemSelected(item);
+        }
+    }
+
     const renderCatalogueItems = () => {
         let catalogueListItems = [];
         for (let i = 0; i < props.items.length; i++) {
             let item: CatalogueItemModel = props.items[i];
             catalogueListItems.push(
                 <GridListTile key={item.title}>
-                    <img src={item.thumbnailSrc} alt={item.title} />
+                    <img src={item.thumbnailSrc} alt={item.title} onClick={() => handleOnItemSelected(item)} />
                     <GridListTileBar
                         title={item.title}
                         subtitle={item.description} />

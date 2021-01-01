@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CatalogueListViewComponent from '../components/CatalogueListView.component';
 import CatalogueGridViewComponent from '../components/CatalogueGridView.component';
-import CatalogueResponsiveFilter, {FilterTagWithGroup } from '../components/CatalogueResponsiveFilter.component';
+import CatalogueResponsiveFilterComponent, {FilterTagWithGroup, FilterValues } from '../components/CatalogueResponsiveFilter.component';
+import CatalogueItemDialogViewComponent from '../components/CatalogueItemDialogView.component';
 import CatalogueItemModel from '../../models/CatalogueItem.model';
 
 import Box from '@material-ui/core/Box';
@@ -61,8 +62,10 @@ export default function CataloguePage() {
         catalogueViewMode: catalogueViewModes[0],
         sortByMode: sortByModes[0],
         selectedFilterTags: []
-    });
+    } as FilterValues);
     const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
+    const [catalogueItemDialogItem, setCatalogueItemDialogItem] = useState<CatalogueItemModel | null>(null);
+    const [isCatalogueItemDialogOpen, setIsCatalogueItemDialogOpen] = useState(false);
 
     // Mutable block scope data
     let catalogueItems: Array<CatalogueItemModel> | null = null;
@@ -81,6 +84,15 @@ export default function CataloguePage() {
         setSearchPhrase(event.target.value as string)
     }
 
+    const handleCatalogueItemSelected = (item: CatalogueItemModel) => {
+        setCatalogueItemDialogItem(item);
+        setIsCatalogueItemDialogOpen(true);
+    }
+
+    const handleCatalogueItemViewClose = () => {
+        setIsCatalogueItemDialogOpen(false);
+    }
+
     const renderCatalogue = () => {
         // TODO: Implement cache refresh with timestamp
         if (catalogueItems == null) {
@@ -91,10 +103,10 @@ export default function CataloguePage() {
 
         switch (filterValues.catalogueViewMode) {
             case catalogueViewModes[0]: { // Grid view
-                return <CatalogueGridViewComponent items={ventedCatalogueItems} />;
+                return <CatalogueGridViewComponent onItemSelected={handleCatalogueItemSelected} items={ventedCatalogueItems} />;
             }
             case catalogueViewModes[1]: { // List View
-                return <CatalogueListViewComponent items={ventedCatalogueItems} />;
+                return <CatalogueListViewComponent onItemSelected={handleCatalogueItemSelected} items={ventedCatalogueItems} />;
             }
         }
 
@@ -187,7 +199,7 @@ export default function CataloguePage() {
                         justify="space-between">
 
                         {!showFilterAsFabFlag ? 
-                        (<CatalogueResponsiveFilter 
+                        (<CatalogueResponsiveFilterComponent 
                             showFilterAsFabFlag={false}
                             filterValues={filterValues} 
                             setFilterValues={setFilterValues}/>)
@@ -212,11 +224,16 @@ export default function CataloguePage() {
                 </Box>
             </Box>
             {showFilterAsFabFlag ?
-                (<CatalogueResponsiveFilter 
+                (<CatalogueResponsiveFilterComponent 
                     showFilterAsFabFlag
                     filterValues={filterValues} 
                     setFilterValues={setFilterValues}/>)
                     : null}
+            <CatalogueItemDialogViewComponent
+                isOpen={isCatalogueItemDialogOpen}
+                selectedCatalogueItem={catalogueItemDialogItem}
+                handleClose={handleCatalogueItemViewClose}
+                />
         </React.Fragment>
     );
 }

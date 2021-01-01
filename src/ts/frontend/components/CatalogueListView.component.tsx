@@ -10,16 +10,23 @@ import Avatar from '@material-ui/core/Avatar';
 
 interface CatalogueListViewComponentProps {
     items: Array<CatalogueItemModel>
+    onItemSelected?: Function;
 }
 
 export default function CatalogueListViewComponent(props: CatalogueListViewComponentProps) {
+    const handleOnItemSelected = (item: CatalogueItemModel) => {
+        if (props.onItemSelected !== undefined) {
+            props.onItemSelected(item);
+        }
+    }
+
     const renderCatalogueItems = () => {
         let catalogueListItems = [];
         for (let i = 0; i < props.items.length; i++) {
             let item: CatalogueItemModel = props.items[i];
             catalogueListItems.push(
                 <React.Fragment>
-                    <ListItem alignItems="flex-start">
+                    <ListItem alignItems="flex-start" onClick={() => handleOnItemSelected(item)}>
                         <ListItemAvatar>
                             <Avatar variant="square" alt={item.title} src={item.thumbnailSrc} />
                         </ListItemAvatar>
