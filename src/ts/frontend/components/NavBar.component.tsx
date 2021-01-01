@@ -96,12 +96,8 @@ export default function NavBarComponent(props: NavBarProps) {
                         <img src={SignatureLogo} className={navBarClasses.signatureLogo} height="60" alt="Signature Logo"></img>
                     </Grid>
                     <Grid container item xs={2} justify='flex-end'>
-                        <IconButton color="inherit" className={navBarClasses.rightButton}>
-                            {
-                            props.isDarkModeOn ? 
-                                <DarkModeOnIcon onClick={handleDarkModeToggle}/> : 
-                                <DarkModeOffIcon onClick={handleDarkModeToggle}/>
-                            }
+                        <IconButton color="inherit" className={navBarClasses.rightButton} onClick={handleDarkModeToggle}>
+                            { props.isDarkModeOn ? <DarkModeOnIcon/> : <DarkModeOffIcon/>}
                         </IconButton>
                         <Button color="inherit" className={navBarClasses.rightButton}>en-CA</Button>
                     </Grid>

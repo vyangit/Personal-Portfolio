@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import '../../styles/App.css';
 import NavBarComponent from './components/NavBar.component'
 import FooterBarComponent from './components/FooterBar.component';
 import HomePage from './pages/Home.page';
 import AppCataloguePage from './pages/Catalogue.page'
 import Box from '@material-ui/core/Box';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const pages = [
   'Home',
@@ -14,6 +15,11 @@ const pages = [
 export default function App() {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false); 
   const [currPage, setCurrPage] = useState(pages[0]);
+  const theme = createMuiTheme({
+    palette: {
+      type: isDarkModeOn ? 'dark': 'light',
+    },
+  });
 
   function handlePageChange(pageLabel: string) {
     setCurrPage(pageLabel);
@@ -27,17 +33,19 @@ export default function App() {
   }
 
   return (
-    <div className="App">
-      <NavBarComponent 
-        currMenuItem={currPage} 
-        menuItems={pages} 
-        onMenuItemClick={handlePageChange}
-        isDarkModeOn={isDarkModeOn}
-        toggleDarkMode={setIsDarkModeOn} />
-      <Box display="flex" flexDirection="row" flexGrow={1} overflow="hidden">
-        {renderPage()}
-      </Box>
-      <FooterBarComponent />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <NavBarComponent 
+          currMenuItem={currPage} 
+          menuItems={pages} 
+          onMenuItemClick={handlePageChange}
+          isDarkModeOn={isDarkModeOn}
+          toggleDarkMode={setIsDarkModeOn} />
+        <Box display="flex" flexDirection="row" flexGrow={1} overflow="hidden">
+          {renderPage()}
+        </Box>
+        <FooterBarComponent />
+      </div>
+    </ThemeProvider>
   );
 }
