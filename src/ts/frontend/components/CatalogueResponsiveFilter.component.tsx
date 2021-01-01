@@ -48,7 +48,7 @@ interface FilterValues {
 }
 
 interface CatalogueResponsiveFilterProps {
-    showFilterAsFabFlag: boolean;
+    showFilterAsFabFlag?: boolean;
     filterValues: FilterValues;
     setFilterValues: Function;
 }
@@ -73,7 +73,7 @@ const createTagToTagGroupMap = (): Array<FilterTagWithGroup> => {
     return tagsWithGroups
 }
 
-export default function CatalogueResponsiveFilter(props: CatalogueResponsiveFilterProps) {
+export default function CatalogueResponsiveFilterComponent(props: CatalogueResponsiveFilterProps) {
     const classes = useStyles();
 
     const [openFabDialog, setOpenFabDialog] = useState(false);
@@ -85,15 +85,24 @@ export default function CatalogueResponsiveFilter(props: CatalogueResponsiveFilt
     const filterOptions: Array<FilterTagWithGroup> = createTagToTagGroupMap()
 
     const handleCatalogueViewChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        props.setFilterValues({ catalogueViewMode: event.target.value as string });
+        props.setFilterValues({ 
+            ...props.filterValues,
+            catalogueViewMode: event.target.value as string 
+        });
     }
 
     const handleSortByChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        props.setFilterValues({ sortByMode: event.target.value as string });
+        props.setFilterValues({ 
+            ...props.filterValues,
+            sortByMode: event.target.value as string 
+        });
     }
 
     const handleFilterTagsChange = (value: FilterTagWithGroup[]) => {
-        props.setFilterValues({ selectedFilterTags: value });
+        props.setFilterValues({
+            ...props.filterValues, 
+            selectedFilterTags: [...value] 
+        });
     }
 
     const handleOpenFabDialog = () => {
@@ -132,10 +141,10 @@ export default function CatalogueResponsiveFilter(props: CatalogueResponsiveFilt
                         <InputLabel>View as:</InputLabel>
                         <Select
                             value={fabDialogFilterTmpValues.catalogueViewMode}
-                            onChange={(e) => setFabDialogFilterTmpValues({
+                            onChange={(e) => {setFabDialogFilterTmpValues({
                                 ...fabDialogFilterTmpValues,
                                 catalogueViewMode: (e.target.value as string)
-                            })}
+                            })}}
                             MenuProps={{
                                 getContentAnchorEl: null,
                                 anchorOrigin: {
@@ -158,10 +167,10 @@ export default function CatalogueResponsiveFilter(props: CatalogueResponsiveFilt
                             <InputLabel>Sort by:</InputLabel>
                             <Select
                                 value={fabDialogFilterTmpValues.sortByMode}
-                                onChange={(e) => setFabDialogFilterTmpValues({
+                                onChange={(e) => {setFabDialogFilterTmpValues({
                                     ...fabDialogFilterTmpValues,
                                     sortByMode: e.target.value as string
-                                })}
+                                })}}
                                 MenuProps={{
                                     getContentAnchorEl: null,
                                     anchorOrigin: {
