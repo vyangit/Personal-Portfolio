@@ -1,12 +1,12 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
     greeting: {
         textTransform: 'uppercase',
-        fontWeight: 800
+        fontWeight: 800,
     },
     intro: {
         fontWeight: 'bold',
@@ -35,9 +35,8 @@ export default function HomePage() {
             alignItems="flex-start" 
             width="70vw"
             margin="auto">
-            <Box display="flex" alignItems="center">            
-                <hr className={classes.greetingLineIn}/>
-                <Typography className={classes.greeting} variant="h6">Hello</Typography>
+            <Box display="flex" alignItems="center">    
+                <Typography className={classes.greeting} variant="h6"><b>―</b> Hello</Typography>
             </Box>
             <Typography className={classes.intro} variant="h4" align="left">
                 I'm Victor Yan
