@@ -28,7 +28,9 @@ export default function CatalogueListViewComponent(props: CatalogueListViewCompo
                 <React.Fragment>
                     <ListItem alignItems="flex-start" onClick={() => handleOnItemSelected(item)}>
                         <ListItemAvatar>
-                            <Avatar variant="square" alt={item.title} src={item.thumbnailSrc} />
+                            <Avatar variant="square" src={item.thumbnailSrc}>
+                                {item.title[0].toLocaleUpperCase()}
+                            </Avatar>
                         </ListItemAvatar>
                         <ListItemText
                             primary={item.title}
