@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         marginBottom: theme.spacing(2)
     },
     thumbnailContainerSmall: {
-        width: '60vw',
-        height: '60vw',
+        width: '50vw',
+        height: '50vw',
         alignSelf: 'center'
     }, 
     thumbnailContainer: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
  * @returns True if screen width is less than 800 dp, else false
  */
 const isScreenSmall = (): boolean => {
-    return window.screen.width < 800
+    return window.screen.width < 750
 }
 
 export default function CatalogueItemDialogViewComponent(props: CatalogueItemDialogViewComponentProps) {
