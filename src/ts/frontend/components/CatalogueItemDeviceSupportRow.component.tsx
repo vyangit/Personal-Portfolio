@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Box from '@material-ui/core/Box';
+import Chip from '@material-ui/core/Chip';
 
 import AndroidIcon from '@material-ui/icons/Android';
 import AppleIcon from '@material-ui/icons/Apple';
@@ -10,6 +11,7 @@ import CodeIcon from '@material-ui/icons/Code';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 interface CatalogueItemDeviceSupportRowComponentProps {
+    showAsChips?: boolean;
     itemTags: string[];
 }
 
@@ -34,16 +36,20 @@ export default function CatalogueItemDeviceSupportRowComponent(props: CatalogueI
     const classes = useStyles();
 
     const createCatalogueItemDeviceRow = (tags: string[]) => {
-        let defaultIcons = [];
+        let rowItems = [];
         for (let tag of tags) {
             if (appDeviceDescriptorIcons.has(tag)) {
                 let icon = appDeviceDescriptorIcons.get(tag);
-                defaultIcons.push(icon);
+                if (props.showAsChips) {
+                    rowItems.push(<Chip icon={icon} label={tag} size="small"/>)
+                } else {
+                    rowItems.push(icon);
+                }
             }
         }
 
         return (<Box className={classes.defaultCatalogueItemDeviceRow}>
-            {defaultIcons}
+            {rowItems}
         </Box>);
     }
 

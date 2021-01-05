@@ -217,11 +217,11 @@ export default function CataloguePage() {
                     filterValues={filterValues} 
                     setFilterValues={setFilterValues}/>)
                     : null}
-            <CatalogueItemDialogViewComponent
+            {catalogueItemDialogItem != null ? (<CatalogueItemDialogViewComponent
                 isOpen={isCatalogueItemDialogOpen}
-                selectedCatalogueItem={catalogueItemDialogItem}
+                catalogueItem={catalogueItemDialogItem}
                 handleClose={handleCatalogueItemViewClose}
-                />
+                />): null}
         </React.Fragment>
     );
 }
