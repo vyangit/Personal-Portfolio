@@ -129,7 +129,8 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
         <Dialog
             open={props.isOpen}
             onClose={handleClose}
-            maxWidth="md">
+            maxWidth="md"
+            scroll="paper">
             <DialogTitle id="responsive-dialog-title">{item.title}</DialogTitle>
             <DialogContent>
                 <Box display="flex" flexDirection={isScreenSmall() ? "column": "row"} justifyContent="space-between">
