@@ -3,6 +3,7 @@ import CatalogueItemModel from '../../models/CatalogueItem.model'
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import Avatar from '@material-ui/core/Avatar';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,6 +25,10 @@ const useStyles = makeStyles({
     gridList: {
         flexGrow: 1,
         flexWrap: 'wrap'
+    },
+    thumbnail: {
+        height: '100%',
+        width: '100%'
     }
 })
 
@@ -42,7 +47,9 @@ export default function CatalogueGridViewComponent(props: CatalogueGridViewCompo
             let item: CatalogueItemModel = props.items[i];
             catalogueListItems.push(
                 <GridListTile key={item.title}>
-                    <img src={item.thumbnailSrc} alt={item.title} onClick={() => handleOnItemSelected(item)} />
+                    <Avatar className={classes.thumbnail} variant="square" src={item.thumbnailSrc} onClick={() => handleOnItemSelected(item)}>
+                        {item.title[0].toLocaleUpperCase()}
+                    </Avatar>
                     <GridListTileBar
                         title={item.title}
                         subtitle={item.description} />
