@@ -13,13 +13,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
 
-import AndroidIcon from '@material-ui/icons/Android';
-import AppleIcon from '@material-ui/icons/Apple';
-import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
-import WebIcon from '@material-ui/icons/Web';
-import CodeIcon from '@material-ui/icons/Code';
+import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
 
 import sortByModes from '../../constants/SortModes.constants'
 import catalogueViewModes from '../../constants/CatalogueViewModes.constants'
@@ -41,15 +36,6 @@ const useStyles = makeStyles((theme: Theme) =>
             overflowX: 'hidden'
         }
     }));
-
-
-const appDeviceDescriptorIcons = {
-    'Android': AndroidIcon,
-    'iOS': AppleIcon,
-    'PC': DesktopWindowsIcon,
-    'Web': WebIcon,
-    'API': CodeIcon
-}
 
 /**
  * Determines if the screen is less than the threshold width.

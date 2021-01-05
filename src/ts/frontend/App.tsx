@@ -29,7 +29,7 @@ export default function App() {
   const classes = useStyles();
   
   const [isDarkModeOn, setIsDarkModeOn] = useState(false); 
-  const [currPage, setCurrPage] = useState(pages[0]);
+  const [currPage, setCurrPage] = useState(pages[1]);
   const themeStyle = isDarkModeOn ? {
     palette: {
       type: 'dark',

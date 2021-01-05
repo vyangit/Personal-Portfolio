@@ -1,12 +1,14 @@
 import React from 'react';
 import CatalogueItemModel from '../../models/CatalogueItem.model'
+import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
 
+import Box from '@material-ui/core/Box';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Avatar from '@material-ui/core/Avatar';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 
 interface CatalogueGridViewComponentProps {
     items: Array<CatalogueItemModel>;
@@ -21,7 +23,7 @@ const determineNumCols = () => {
     return cols;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     gridList: {
         flexGrow: 1,
         flexWrap: 'wrap'
@@ -29,8 +31,13 @@ const useStyles = makeStyles({
     thumbnail: {
         height: '100%',
         width: '100%'
+    },
+    deviceSupportRow: {
+        position: 'absolute',
+        top: theme.spacing(1),
+        left: theme.spacing(1)
     }
-})
+}));
 
 export default function CatalogueGridViewComponent(props: CatalogueGridViewComponentProps) {
     const classes = useStyles();
@@ -47,9 +54,12 @@ export default function CatalogueGridViewComponent(props: CatalogueGridViewCompo
             let item: CatalogueItemModel = props.items[i];
             catalogueListItems.push(
                 <GridListTile key={item.title}>
-                    <Avatar className={classes.thumbnail} variant="square" src={item.thumbnailSrc} onClick={() => handleOnItemSelected(item)}>
+                    <Avatar variant="square" className={classes.thumbnail} src={item.thumbnailSrc} onClick={() => handleOnItemSelected(item)}>
                         {item.title[0].toLocaleUpperCase()}
                     </Avatar>
+                    <div className={classes.deviceSupportRow}> 
+                    <CatalogueItemDeviceSupportRowComponent itemTags={item.filterTags}/>
+                    </div>
                     <GridListTileBar
                         title={item.title}
                         subtitle={item.description} />
