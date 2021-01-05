@@ -50,7 +50,7 @@ export default function NavBarComponent(props: NavBarProps) {
     }
 
     const handleDarkModeToggle = () => {
-        if (props.toggleDarkMode != undefined) {
+        if (props.toggleDarkMode !== undefined) {
             props.toggleDarkMode(!props.isDarkModeOn);
         }
     }

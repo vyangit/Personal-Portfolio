@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import CatalogueItemModel from '../../models/CatalogueItem.model';
 import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component'
 
@@ -64,7 +64,7 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
     const item = props.catalogueItem;
 
     const handleClose = () => {
-        if (props.handleClose != undefined) {
+        if (props.handleClose !== undefined) {
             props.handleClose()
         }
     }

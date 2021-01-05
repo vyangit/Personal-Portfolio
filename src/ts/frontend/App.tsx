@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import '../../styles/App.css';
 import NavBarComponent from './components/NavBar.component'
 import FooterBarComponent from './components/FooterBar.component';
@@ -6,29 +6,20 @@ import HomePage from './pages/Home.page';
 import AppCataloguePage from './pages/Catalogue.page'
 
 import Box from '@material-ui/core/Box';
+
 import { createMuiTheme, ThemeProvider, ThemeOptions } from '@material-ui/core/styles';
 import { blue, red } from '@material-ui/core/colors';
-
-import { makeStyles } from '@material-ui/core/styles';
 
 const pages = [
   'Home',
   'App Catalogue'
 ]
 
-const useStyles = makeStyles({
-  signatureLogo: {
-      margin: 'auto'
-  },
-  rightButton: {
-      marginLeft: '4px'
-  }
-});
-
 export default function App() {
-  const classes = useStyles();
-  
-  const [isDarkModeOn, setIsDarkModeOn] = useState(false); 
+  // Opt to not use useMediaQuery hook because of issues with first render not detecting scheme properly
+  const isDefaultDarkModeOn =  window.matchMedia('(prefers-color-scheme: dark)').matches; 
+
+  const [isDarkModeOn, setIsDarkModeOn] = useState(isDefaultDarkModeOn); 
   const [currPage, setCurrPage] = useState(pages[0]);
   const themeStyle = isDarkModeOn ? {
     palette: {

@@ -2,7 +2,6 @@ import React from 'react';
 import CatalogueItemModel from '../../models/CatalogueItem.model'
 import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
 
-import Box from '@material-ui/core/Box';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Avatar from '@material-ui/core/Avatar';
