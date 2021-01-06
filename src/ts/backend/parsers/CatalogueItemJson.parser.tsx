@@ -12,8 +12,8 @@ export default class CatalogueItemJsonParser {
                     entry.thumbnailSrc as string,
                     entry.filterTags as string[],
                     new Date(entry.releaseDate as string),
-                    entry.releaseLink as string,
-                    entry.repoLink as string
+                    entry.srcRepoLink as string,
+                    entry.distributionsLinks as string[][]
                 ));
             });
         }

@@ -84,7 +84,7 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
     const renderAvailableOnRow = () => {
         return (
             <Box display="flex" flexDirection="column" className={classes.bottomGutter}>
-                <Typography variant="subtitle1">Available on:</Typography>
+                <Typography variant="subtitle1">Available for:</Typography>
                 <CatalogueItemDeviceSupportRowComponent showAsChips itemTags={item.filterTags}/>
             </Box>
         );  

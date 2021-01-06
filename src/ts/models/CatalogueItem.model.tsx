@@ -4,8 +4,8 @@ export default class CatalogueItemModel {
     thumbnailSrc: string;
     filterTags: string[];
     releaseDate: Date;
-    releaseLink: string;
-    repoLink: string;
+    srcRepoLink: string;
+    distributionsLinks: string[][];
 
     constructor(
         title: string, 
@@ -13,15 +13,15 @@ export default class CatalogueItemModel {
         thumbnailSrc: string, 
         filterTags: string[], 
         releaseDate: Date, 
-        releaseLink: string, 
-        repoLink: string
+        srcRepoLink: string,
+        distributionsLinks: string[][] 
         ) {
         this.title = title;
         this.description = description;
         this.thumbnailSrc = thumbnailSrc;
         this.filterTags = filterTags;
         this.releaseDate = releaseDate;
-        this.releaseLink = releaseLink;
-        this.repoLink = repoLink;
+        this.srcRepoLink = srcRepoLink;
+        this.distributionsLinks = distributionsLinks
     }
 }
