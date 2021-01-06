@@ -6,7 +6,7 @@
             "thumbnailSrc": "",
             "filterTags": ["Android", "Productivity", "Tools", "Free to Use"],
             "releaseDate": "2020-08-17",
-            "distributionLinks": [["github", "https://github.com/vyangit/AlwaysOnWidget/releases/tag/1.0"]],
+            "distributionLinks": [["Github", "https://github.com/vyangit/AlwaysOnWidget/releases/tag/1.0"]],
             "srcRepoLink": "https://github.com/vyangit/AlwaysOnWidget/"
         },
         {
@@ -15,7 +15,7 @@
             "thumbnailSrc": "",
             "filterTags": ["Android", "Personalization", "Free to Use"],
             "releaseDate": "2020-12-07",
-            "distributionLinks": [["github", "https://github.com/vyangit/Daily-Bing-Wallpapers/releases/tag/1.0"]],
+            "distributionLinks": [["Github", "https://github.com/vyangit/Daily-Bing-Wallpapers/releases/tag/1.0"]],
             "srcRepoLink": "https://github.com/vyangit/Daily-Bing-Wallpapers/"
         }
     ]

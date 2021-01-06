@@ -13,7 +13,7 @@ export default class CatalogueItemJsonParser {
                     entry.filterTags as string[],
                     new Date(entry.releaseDate as string),
                     entry.srcRepoLink as string,
-                    entry.distributionsLinks as string[][]
+                    entry.distributionLinks as string[][]
                 ));
             });
         }

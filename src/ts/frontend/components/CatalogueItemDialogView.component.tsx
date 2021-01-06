@@ -1,6 +1,7 @@
 import React from 'react';
 import CatalogueItemModel from '../../models/CatalogueItem.model';
-import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component'
+import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
+import CatalogueItemDistributionChannelRow from './CatalogueItemDistributionChannelRow.component';
 
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -118,9 +119,7 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
         return (
             <Box display="flex" flexDirection="column">
                 <Typography variant="subtitle1">Distributions:</Typography>
-                <DialogContentText>
-                    distributions
-                </DialogContentText>
+                <CatalogueItemDistributionChannelRow distributionLinks={item.distributionLinks}/>
             </Box>
         );
     }
