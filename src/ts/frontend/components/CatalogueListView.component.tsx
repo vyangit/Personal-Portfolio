@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'flex-end',
             alignSelf: 'center'
         }
-}));
+    }));
 
 export default function CatalogueListViewComponent(props: CatalogueListViewComponentProps) {
     const classes = useStyles();
@@ -54,7 +54,7 @@ export default function CatalogueListViewComponent(props: CatalogueListViewCompo
                             primary={item.title}
                             secondary={item.description} />
                         <Box className={classes.endAlign}>
-                            <CatalogueItemDeviceSupportRowComponent itemTags={item.filterTags}/>
+                            <CatalogueItemDeviceSupportRowComponent itemTags={item.filterTags} />
                         </Box>
                     </ListItem>
                     {i !== props.items.length - 1 ? <Divider variant="middle" /> : null}

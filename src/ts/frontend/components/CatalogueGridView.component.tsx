@@ -56,8 +56,8 @@ export default function CatalogueGridViewComponent(props: CatalogueGridViewCompo
                     <Avatar variant="square" className={classes.thumbnail} src={item.thumbnailSrc} onClick={() => handleOnItemSelected(item)}>
                         {item.title[0].toLocaleUpperCase()}
                     </Avatar>
-                    <div className={classes.deviceSupportRow}> 
-                    <CatalogueItemDeviceSupportRowComponent itemTags={item.filterTags}/>
+                    <div className={classes.deviceSupportRow}>
+                        <CatalogueItemDeviceSupportRowComponent itemTags={item.filterTags} />
                     </div>
                     <GridListTileBar
                         title={item.title}

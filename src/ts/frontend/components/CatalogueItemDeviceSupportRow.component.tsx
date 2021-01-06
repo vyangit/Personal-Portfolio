@@ -22,14 +22,14 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: 'row',
             justifyContent: 'space-between'
         }
-}));
+    }));
 
 const appDeviceDescriptorIcons = new Map([
-    ['Android', <AndroidIcon/>],
-    ['iOS', <AppleIcon/>],
-    ['PC', <DesktopWindowsIcon/>],
-    ['Web', <WebIcon/>],
-    ['API', <CodeIcon/>]
+    ['Android', <AndroidIcon />],
+    ['iOS', <AppleIcon />],
+    ['PC', <DesktopWindowsIcon />],
+    ['Web', <WebIcon />],
+    ['API', <CodeIcon />]
 ]);
 
 export default function CatalogueItemDeviceSupportRowComponent(props: CatalogueItemDeviceSupportRowComponentProps) {
@@ -41,7 +41,7 @@ export default function CatalogueItemDeviceSupportRowComponent(props: CatalogueI
             if (appDeviceDescriptorIcons.has(tag)) {
                 let icon = appDeviceDescriptorIcons.get(tag);
                 if (props.showAsChips) {
-                    rowItems.push(<Chip icon={icon} label={tag} size="small"/>)
+                    rowItems.push(<Chip icon={icon} label={tag} size="small" />)
                 } else {
                     rowItems.push(icon);
                 }

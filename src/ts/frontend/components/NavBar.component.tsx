@@ -19,7 +19,7 @@ interface NavBarProps {
     currMenuItem: string,
     menuItems: string[],
     isDarkModeOn?: boolean;
-    toggleDarkMode? : Function
+    toggleDarkMode?: Function
 }
 
 const useStyles = makeStyles({
@@ -97,7 +97,7 @@ export default function NavBarComponent(props: NavBarProps) {
                     </Grid>
                     <Grid container item xs={2} justify='flex-end'>
                         <IconButton color="inherit" className={navBarClasses.rightButton} onClick={handleDarkModeToggle}>
-                            { props.isDarkModeOn ? <DarkModeOnIcon/> : <DarkModeOffIcon/>}
+                            {props.isDarkModeOn ? <DarkModeOnIcon /> : <DarkModeOffIcon />}
                         </IconButton>
                         <Button color="inherit" className={navBarClasses.rightButton}>en-CA</Button>
                     </Grid>

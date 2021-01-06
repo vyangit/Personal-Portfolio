@@ -8,14 +8,14 @@ export default class CatalogueItemModel {
     distributionLinks: string[][];
 
     constructor(
-        title: string, 
-        description: string, 
-        thumbnailSrc: string, 
-        filterTags: string[], 
-        releaseDate: Date, 
+        title: string,
+        description: string,
+        thumbnailSrc: string,
+        filterTags: string[],
+        releaseDate: Date,
         srcRepoLink: string,
-        distributionsLinks: string[][] 
-        ) {
+        distributionsLinks: string[][]
+    ) {
         this.title = title;
         this.description = description;
         this.thumbnailSrc = thumbnailSrc;

@@ -6,7 +6,7 @@ import Link from '@material-ui/core/Link';
 
 import GithubIcon from '@material-ui/icons/GitHub';
 import distributionChannels from '../../constants/DistributionChannels.constants';
-import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 interface CatalogueItemDistributionChannelRowProps {
     distributionLinks: string[][];
@@ -26,19 +26,19 @@ export default function CatalogueItemDistributionChannelRow(props: CatalogueItem
     const generateGenericBadge = (storeName: string, storeLink: string) => {
         let badgeIcon = null;
         switch (storeName) {
-            case 'Github': badgeIcon = <GithubIcon/>
-        } 
+            case 'Github': badgeIcon = <GithubIcon />
+        }
 
         return (
-        <Link href={storeLink} rel="noreferrer" target="_blank">
-        <Button 
-            variant="contained" 
-            color="secondary"
-            className={classes.genericBadgeButtonWrapper}
-            startIcon={badgeIcon}>
-                {storeName}
-        </Button>
-        </Link>
+            <Link href={storeLink} rel="noreferrer" target="_blank">
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.genericBadgeButtonWrapper}
+                    startIcon={badgeIcon}>
+                    {storeName}
+                </Button>
+            </Link>
         );
     }
 
@@ -55,7 +55,7 @@ export default function CatalogueItemDistributionChannelRow(props: CatalogueItem
             let hostName = channel[0];
             let hostLink = channel[1];
 
-            if (specificStores?.includes(hostName)){
+            if (specificStores?.includes(hostName)) {
                 badgeEmbeds.push(generateSpecificBadge(hostName, hostLink));
             } else if (genericStores?.includes(hostName)) {
                 badgeEmbeds.push(generateGenericBadge(hostName, hostLink));

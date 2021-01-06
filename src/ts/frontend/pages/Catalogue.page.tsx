@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CatalogueListViewComponent from '../components/CatalogueListView.component';
 import CatalogueGridViewComponent from '../components/CatalogueGridView.component';
-import CatalogueResponsiveFilterComponent, {FilterTagWithGroup, FilterValues } from '../components/CatalogueResponsiveFilter.component';
+import CatalogueResponsiveFilterComponent, { FilterTagWithGroup, FilterValues } from '../components/CatalogueResponsiveFilter.component';
 import CatalogueItemDialogViewComponent from '../components/CatalogueItemDialogView.component';
 import CatalogueItemModel from '../../models/CatalogueItem.model';
 
@@ -186,11 +186,11 @@ export default function CataloguePage() {
                         spacing={2}
                         justify="space-between">
 
-                        {!showFilterAsFabFlag ? 
-                        (<CatalogueResponsiveFilterComponent 
-                            showFilterAsFabFlag={false}
-                            filterValues={filterValues} 
-                            setFilterValues={setFilterValues}/>)
+                        {!showFilterAsFabFlag ?
+                            (<CatalogueResponsiveFilterComponent
+                                showFilterAsFabFlag={false}
+                                filterValues={filterValues}
+                                setFilterValues={setFilterValues} />)
                             : null}
                         <Grid item xs={showFilterAsFabFlag ? 12 : 3}>
                             <TextField
@@ -212,16 +212,16 @@ export default function CataloguePage() {
                 </Box>
             </Box>
             {showFilterAsFabFlag ?
-                (<CatalogueResponsiveFilterComponent 
+                (<CatalogueResponsiveFilterComponent
                     showFilterAsFabFlag
-                    filterValues={filterValues} 
-                    setFilterValues={setFilterValues}/>)
-                    : null}
+                    filterValues={filterValues}
+                    setFilterValues={setFilterValues} />)
+                : null}
             {catalogueItemDialogItem != null ? (<CatalogueItemDialogViewComponent
                 isOpen={isCatalogueItemDialogOpen}
                 catalogueItem={catalogueItemDialogItem}
                 handleClose={handleCatalogueItemViewClose}
-                />): null}
+            />) : null}
         </React.Fragment>
     );
 }

@@ -17,7 +17,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 interface CatalogueItemDialogViewComponentProps {
     isOpen: boolean;
     catalogueItem: CatalogueItemModel;
-    handleClose ?: Function;
+    handleClose?: Function;
 }
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     thumbnail: {
         height: '100%',
         width: '100%',
-    }, 
+    },
     thumbnailHorizontal: {
         display: 'flex',
         marginRight: theme.spacing(2)
-    }, 
+    },
     thumbnailVertical: {
         display: 'flex',
         alignSelf: 'center',
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         width: '50vw',
         height: '50vw',
         alignSelf: 'center'
-    }, 
+    },
     thumbnailContainer: {
         width: '12rem',
         height: '12rem',
@@ -72,13 +72,13 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
 
     const renderAppThumbnail = () => {
         return (
-        <Box className={isScreenSmall() ? classes.thumbnailVertical: classes.thumbnailHorizontal}>
-            <Box className={isScreenSmall() ? classes.thumbnailContainerSmall: classes.thumbnailContainer}>
-                <Avatar variant="rounded" className={classes.thumbnail} src={item.thumbnailSrc}>
-                    {item.title[0].toLocaleUpperCase()}
-                </Avatar>
+            <Box className={isScreenSmall() ? classes.thumbnailVertical : classes.thumbnailHorizontal}>
+                <Box className={isScreenSmall() ? classes.thumbnailContainerSmall : classes.thumbnailContainer}>
+                    <Avatar variant="rounded" className={classes.thumbnail} src={item.thumbnailSrc}>
+                        {item.title[0].toLocaleUpperCase()}
+                    </Avatar>
+                </Box>
             </Box>
-        </Box>
         );
     }
 
@@ -86,22 +86,22 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
         return (
             <Box display="flex" flexDirection="column" className={classes.bottomGutter}>
                 <Typography variant="subtitle1">Available for:</Typography>
-                <CatalogueItemDeviceSupportRowComponent showAsChips itemTags={item.filterTags}/>
+                <CatalogueItemDeviceSupportRowComponent showAsChips itemTags={item.filterTags} />
             </Box>
-        );  
+        );
     }
 
     const renderCategoryChips = () => {
         let categoryChips = [];
         for (let category of item.filterTags) {
-            categoryChips.push(<Chip size="small" label={category}/>);
+            categoryChips.push(<Chip size="small" label={category} />);
         }
 
         return (
-        <Box display="flex" flexDirection="column" flexWrap="wrap" className={classes.bottomGutter}>
-            <Typography variant="subtitle1">Categories:</Typography>
-            <Box>{categoryChips}</Box>
-        </Box>)
+            <Box display="flex" flexDirection="column" flexWrap="wrap" className={classes.bottomGutter}>
+                <Typography variant="subtitle1">Categories:</Typography>
+                <Box>{categoryChips}</Box>
+            </Box>)
     }
 
     const renderDescription = () => {
@@ -119,7 +119,7 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
         return (
             <Box display="flex" flexDirection="column">
                 <Typography variant="subtitle1">Distributions:</Typography>
-                <CatalogueItemDistributionChannelRow distributionLinks={item.distributionLinks}/>
+                <CatalogueItemDistributionChannelRow distributionLinks={item.distributionLinks} />
             </Box>
         );
     }
@@ -132,7 +132,7 @@ export default function CatalogueItemDialogViewComponent(props: CatalogueItemDia
             scroll="paper">
             <DialogTitle id="responsive-dialog-title">{item.title}</DialogTitle>
             <DialogContent>
-                <Box display="flex" flexDirection={isScreenSmall() ? "column": "row"} justifyContent="space-between">
+                <Box display="flex" flexDirection={isScreenSmall() ? "column" : "row"} justifyContent="space-between">
                     {renderAppThumbnail()}
                     <Box display="flex" flexDirection="column">
                         {renderAvailableOnRow()}

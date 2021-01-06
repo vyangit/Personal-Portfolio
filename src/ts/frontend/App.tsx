@@ -17,35 +17,35 @@ const pages = [
 
 export default function App() {
   // Opt to not use useMediaQuery hook because of issues with first render not detecting scheme properly
-  const isDefaultDarkModeOn =  window.matchMedia('(prefers-color-scheme: dark)').matches; 
+  const isDefaultDarkModeOn = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  const [isDarkModeOn, setIsDarkModeOn] = useState(isDefaultDarkModeOn); 
+  const [isDarkModeOn, setIsDarkModeOn] = useState(isDefaultDarkModeOn);
   const [currPage, setCurrPage] = useState(pages[0]);
   const themeStyle = isDarkModeOn ? {
     palette: {
       type: 'dark',
       primary: {
         main: red[700]
-      },secondary: {
+      }, secondary: {
         main: red[900]
       }
     },
   } : {
-    palette: {
-      type: 'light',
-      primary: blue,
-      secondary: {
-        main: blue[700]
-      }
-    },
-  }
-  const themeInjects = isDarkModeOn? {
+      palette: {
+        type: 'light',
+        primary: blue,
+        secondary: {
+          main: blue[700]
+        }
+      },
+    }
+  const themeInjects = isDarkModeOn ? {
     background: 'black',
     color: 'white'
   } : {
-    background: 'white',
-    color: 'black'
-  }
+      background: 'white',
+      color: 'black'
+    }
   const theme = createMuiTheme(themeStyle as ThemeOptions);
 
   function handlePageChange(pageLabel: string) {
@@ -62,9 +62,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App" style={themeInjects}>
-        <NavBarComponent 
-          currMenuItem={currPage} 
-          menuItems={pages} 
+        <NavBarComponent
+          currMenuItem={currPage}
+          menuItems={pages}
           onMenuItemClick={handlePageChange}
           isDarkModeOn={isDarkModeOn}
           toggleDarkMode={setIsDarkModeOn} />

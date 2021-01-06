@@ -14,8 +14,8 @@ const useStyles = makeStyles({
         marginBottom: '0.5rem'
     },
     greetingLineIn: {
-        backgroundColor:'black',
-        height:'0.25rem',
+        backgroundColor: 'black',
+        height: '0.25rem',
         width: '2rem',
         marginRight: '8px'
     },
@@ -29,13 +29,13 @@ export default function HomePage() {
     const classes = useStyles()
 
     return (
-        <Box 
-            display="flex" 
-            flexDirection="column" 
-            alignItems="flex-start" 
+        <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
             width="70vw"
             margin="auto">
-            <Box display="flex" alignItems="center">    
+            <Box display="flex" alignItems="center">
                 <Typography className={classes.greeting} variant="h6"><b>―</b> Hello</Typography>
             </Box>
             <Typography className={classes.intro} variant="h4" align="left">
@@ -45,6 +45,6 @@ export default function HomePage() {
                 A tech enthusiast and software developer located in Canada, looking for work across the globe and looking to share his own.
             </Typography>
         </Box>
-        );
+    );
 }
 
