@@ -18,7 +18,6 @@ const pages = [
 export default function App() {
   // Opt to not use useMediaQuery hook because of issues with first render not detecting scheme properly
   const isDefaultDarkModeOn = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   const [isDarkModeOn, setIsDarkModeOn] = useState(isDefaultDarkModeOn);
   const [currPage, setCurrPage] = useState(pages[0]);
   const themeStyle = isDarkModeOn ? {
