@@ -42,7 +42,7 @@ export default function App() {
     background: 'black',
     color: 'white'
   } : {
-      background: 'white',
+      background: '#EAEFF2',
       color: 'black'
     }
   const theme = createMuiTheme(themeStyle as ThemeOptions);
