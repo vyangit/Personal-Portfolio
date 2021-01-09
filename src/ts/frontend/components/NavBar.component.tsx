@@ -101,7 +101,7 @@ export default function NavBarComponent(props: NavBarProps) {
                         <IconButton color="inherit" className={navBarClasses.rightButton} onClick={handleDarkModeToggle}>
                             {props.isDarkModeOn ? <DarkModeOnIcon /> : <DarkModeOffIcon />}
                         </IconButton>
-                        <Button color="inherit" className={navBarClasses.rightButton}>en-CA</Button>
+                        {/* <Button color="inherit" className={navBarClasses.rightButton}>en-CA</Button> */}
                     </Grid>
                 </Grid>
             </Toolbar>
