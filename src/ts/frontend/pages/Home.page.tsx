@@ -45,13 +45,23 @@ const useStyles = makeStyles({
     }
 })
 
+
+/**
+ * Determines if the screen is less than the threshold width.
+ * 
+ * @returns True if screen width is less than 800 dp, else false
+ */
+const isScreenSmall = (): boolean => {
+    return window.screen.width < 850;
+}
+
 export default function HomePage(props: HomePageProps) {
     const classes = useStyles()
 
     return (
             <Container fixed>
                 <Box className={classes.salutations}>
-                    <Box margin="auto">
+                    <Box margin="auto" marginBottom={isScreenSmall() ? '25%' : 'auto'}>
                         <Box display="flex" alignItems="center">
                             <Typography className={classes.greeting} variant="h6"><b>―</b> Hello</Typography>
                         </Box>
