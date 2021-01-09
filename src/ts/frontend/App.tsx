@@ -53,7 +53,7 @@ export default function App() {
 
   function renderPage() {
     switch (currPage) {
-      case pages[0]: return <HomePage />
+      case pages[0]: return <HomePage isDarkModeOn={isDarkModeOn}/>
       case pages[1]: return <AppCataloguePage />
     }
   }
