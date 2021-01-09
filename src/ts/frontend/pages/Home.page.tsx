@@ -36,11 +36,11 @@ const useStyles = makeStyles({
         zIndex: 2
     },
     portrait: {
-        maxWidth: '80%',
-        maxHeight: '80%',
+        maxWidth: '84%',
+        maxHeight: '84%',
         position: 'absolute',
         top: '13%',
-        right: '10%',
+        right: '7%',
         zIndex: 1
     }
 })
@@ -49,7 +49,7 @@ export default function HomePage(props: HomePageProps) {
     const classes = useStyles()
 
     return (
-            <Container>
+            <Container fixed>
                 <Box className={classes.salutations}>
                     <Box margin="auto">
                         <Box display="flex" alignItems="center">
@@ -64,7 +64,6 @@ export default function HomePage(props: HomePageProps) {
                     </Box>
                 </Box>
                  <img src={props.isDarkModeOn ? portfolioSplashDark: portfolioSplash} className={classes.portrait}/>
-            
             </Container>
     );
 }
