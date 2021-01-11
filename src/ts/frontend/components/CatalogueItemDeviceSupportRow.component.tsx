@@ -2,6 +2,7 @@ import React from 'react';
 
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
+import Icon from '@material-ui/core/Icon';
 
 import AndroidIcon from '@material-ui/icons/Android';
 import AppleIcon from '@material-ui/icons/Apple';
@@ -43,7 +44,7 @@ export default function CatalogueItemDeviceSupportRowComponent(props: CatalogueI
                 if (props.showAsChips) {
                     rowItems.push(<Chip icon={icon} label={tag} size="small" />)
                 } else {
-                    rowItems.push(icon);
+                    rowItems.push(<Icon color="action">{icon}</Icon>);
                 }
             }
         }

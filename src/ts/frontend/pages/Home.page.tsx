@@ -73,7 +73,7 @@ export default function HomePage(props: HomePageProps) {
                         </Typography>
                     </Box>
                 </Box>
-                 <img src={props.isDarkModeOn ? portfolioSplashDark: portfolioSplash} className={classes.portrait}/>
+                 <img src={props.isDarkModeOn ? portfolioSplashDark: portfolioSplash} className={classes.portrait} alt="me"/>
             </Container>
     );
 }
