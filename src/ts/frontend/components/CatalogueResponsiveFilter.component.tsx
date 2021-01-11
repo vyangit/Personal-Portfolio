@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme: Theme) =>
         boxY: {
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(1)
+        },
+        filterTagsRoot: {
+            minHeight: '2rem'
         }
     }));
 
@@ -195,7 +198,8 @@ export default function CatalogueResponsiveFilterComponent(props: CatalogueRespo
 
                     <Autocomplete
                         multiple
-                        defaultValue={fabDialogFilterTmpValues.selectedFilterTags}
+                        disableCloseOnSelect
+                        value={fabDialogFilterTmpValues.selectedFilterTags}
                         options={filterOptions}
                         groupBy={(option) => option.group}
                         getOptionLabel={(option) => option.label}
@@ -282,7 +286,11 @@ export default function CatalogueResponsiveFilterComponent(props: CatalogueRespo
                 <Grid item xs={3}>
                     <Autocomplete
                         multiple
-                        defaultValue={props.filterValues.selectedFilterTags}
+                        disableCloseOnSelect
+                        classes={{inputRoot: classes.filterTagsRoot}}
+                        size="small"
+                        limitTags={3}
+                        value={props.filterValues.selectedFilterTags}
                         options={filterOptions}
                         groupBy={(option) => option.group}
                         getOptionLabel={(option) => option.label}
