@@ -1,4 +1,4 @@
-import CatalogueItemModel from '../../models/CatalogueItem.model';
+import CatalogueItemModel from '../models/CatalogueItem.model';
 
 export default class CatalogueItemJsonParser {
     public static parseJson(catalogueJson: string): Array<CatalogueItemModel> {
