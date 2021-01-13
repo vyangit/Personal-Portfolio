@@ -15,9 +15,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 
-import filterByTagGroups from '@constants/TagGroups.constants';
-import sortByModes from '@constants/SortModes.constants'
-import catalogueViewModes from '@constants/CatalogueViewModes.constants'
+import filterByTagGroups from '../../constants/TagGroups.constants';
+import sortByModes from '../../constants/SortModes.constants'
+import catalogueViewModes from '../../constants/CatalogueViewModes.constants'
 
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';

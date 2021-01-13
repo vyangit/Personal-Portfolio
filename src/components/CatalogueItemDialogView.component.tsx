@@ -1,7 +1,7 @@
 import React from 'react';
-import CatalogueItemModel from '@models/CatalogueItem.model';
-import CatalogueItemDeviceSupportRowComponent from '@components/CatalogueItemDeviceSupportRow.component';
-import CatalogueItemDistributionChannelRow from '@components/CatalogueItemDistributionChannelRow.component';
+import CatalogueItemModel from '../../models/CatalogueItem.model';
+import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
+import CatalogueItemDistributionChannelRow from './CatalogueItemDistributionChannelRow.component';
 
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';

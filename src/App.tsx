@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import '@styles/App.css';
-import NavBarComponent from '@components/NavBar.component'
-import FooterBarComponent from '@components/FooterBar.component';
-import HomePage from '@pages/Home.page';
-import AppCataloguePage from '@pages/Catalogue.page'
+import '../../styles/App.css';
+import NavBarComponent from './components/NavBar.component'
+import FooterBarComponent from './components/FooterBar.component';
+import HomePage from './pages/Home.page';
+import AppCataloguePage from './pages/Catalogue.page'
 
 import Box from '@material-ui/core/Box';
 

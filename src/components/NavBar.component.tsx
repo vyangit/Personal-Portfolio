@@ -9,8 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import SignatureLogoLight from '@assets/svg/v_light.svg';
-import SignatureLogoDark from '@assets/svg/v_dark.svg';
+import SignatureLogoLight from '../../../assets/svg/v_light.svg';
+import SignatureLogoDark from '../../../assets/svg/v_dark.svg';
 import DarkModeOnIcon from '@material-ui/icons/Brightness5';
 import DarkModeOffIcon from '@material-ui/icons/Brightness7';
 import { makeStyles } from '@material-ui/core/styles';
