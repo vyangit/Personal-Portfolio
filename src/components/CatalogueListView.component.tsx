@@ -1,7 +1,7 @@
 import React from 'react';
-import CatalogueItemModel from '../../models/CatalogueItem.model'
+import CatalogueItemModel from '@models/CatalogueItem.model'
 
-import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
+import CatalogueItemDeviceSupportRowComponent from '@components/CatalogueItemDeviceSupportRow.component';
 
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';

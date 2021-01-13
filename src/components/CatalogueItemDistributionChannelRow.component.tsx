@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 
 import GithubIcon from '@material-ui/icons/GitHub';
-import distributionChannels from '../../constants/DistributionChannels.constants';
+import distributionChannels from '@constants/DistributionChannels.constants';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 interface CatalogueItemDistributionChannelRowProps {
