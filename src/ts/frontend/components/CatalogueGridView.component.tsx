@@ -1,5 +1,5 @@
 import React from 'react';
-import CatalogueItemModel from '@Models/CatalogueItem.model'
+import CatalogueItemModel from '../../models/CatalogueItem.model'
 import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
 
 import GridList from '@material-ui/core/GridList';

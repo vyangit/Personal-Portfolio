@@ -3,8 +3,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 
-import portfolioSplash from '@assets/png/portfolio_splash_light.png';
-import portfolioSplashDark from '@assets/png/portfolio_splash_dark.png';
+import portfolioSplash from '../../../assets/png/portfolio_splash_light.png';
+import portfolioSplashDark from '../../../assets/png/portfolio_splash_dark.png';
 import { makeStyles } from '@material-ui/styles';
 
 interface HomePageProps {

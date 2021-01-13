@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import App from './App';
+import App from './ts/frontend/App';
 // import reportWebVitals from './js/tests/reportWebVitals';
 
 // Work around cause dark mode media query not working on main html
