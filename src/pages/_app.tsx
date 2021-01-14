@@ -6,13 +6,10 @@ import '@styles/App.css';
 import React, { useState, useEffect } from 'react';
 import NavBarComponent from '@components/NavBar.component'
 import FooterBarComponent from '@components/FooterBar.component';
-import HomePage from '.';
-import AppCataloguePage from './catalogue'
 
 import Box from '@material-ui/core/Box';
 
 import { createMuiTheme, ThemeProvider, ThemeOptions } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { blue, red } from '@material-ui/core/colors';
 
 const pages = new Array<Array<string>>();
@@ -20,7 +17,6 @@ pages.push(['Home', '/']);
 pages.push(['App Catalogue', '/catalogue']);
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // Opt to not use useMediaQuery hook because of issues with first render not detecting scheme properly
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [currPage, setCurrPage] = useState('Home');
   const themeStyle = isDarkModeOn ? {
