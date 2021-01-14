@@ -1,4 +1,5 @@
 import React from 'react';
+import NLink from 'next/link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
@@ -9,12 +10,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import SignatureLogoLight from '../../../assets/svg/v_light.svg';
-import SignatureLogoDark from '../../../assets/svg/v_dark.svg';
 import DarkModeOnIcon from '@material-ui/icons/Brightness5';
 import DarkModeOffIcon from '@material-ui/icons/Brightness7';
 import { makeStyles } from '@material-ui/core/styles';
 
+const SignatureLogoLight = '/assets/svg/v_light.svg';
+const SignatureLogoDark = '/assets/svg/v_dark.svg';
 
 interface NavBarProps {
     onMenuItemClick: Function,
@@ -30,6 +31,10 @@ const useStyles = makeStyles({
     },
     rightButton: {
         marginLeft: '4px'
+    },
+    noUnderline: {
+        textDecoration: 'none',
+        color: 'inherit'
     }
 });
 
@@ -61,9 +66,14 @@ export default function NavBarComponent(props: NavBarProps) {
         let menuItemElements = [];
         for (let item of props.menuItems) {
             menuItemElements.push(
-                <MenuItem onClick={() => handleMenuItemClick(item)}>{item}</MenuItem>
+                <MenuItem onClick={() => handleMenuItemClick(item)}>
+                    <NLink href="/">
+                        <a className={navBarClasses.noUnderline}>
+                            {item}
+                        </a>
+                    </NLink>
+                </MenuItem>
             )
-
         }
 
         return menuItemElements;

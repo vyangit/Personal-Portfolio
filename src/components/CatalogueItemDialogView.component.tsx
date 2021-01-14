@@ -1,5 +1,5 @@
 import React from 'react';
-import CatalogueItemModel from '../../models/CatalogueItem.model';
+import CatalogueItemModel from '@models/CatalogueItem.model';
 import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
 import CatalogueItemDistributionChannelRow from './CatalogueItemDistributionChannelRow.component';
 

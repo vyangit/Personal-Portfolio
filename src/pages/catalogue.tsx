@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import CatalogueListViewComponent from '../components/CatalogueListView.component';
-import CatalogueGridViewComponent from '../components/CatalogueGridView.component';
-import CatalogueResponsiveFilterComponent, { FilterTagWithGroup, FilterValues } from '../components/CatalogueResponsiveFilter.component';
-import CatalogueItemDialogViewComponent from '../components/CatalogueItemDialogView.component';
-import CatalogueItemModel from '../../models/CatalogueItem.model';
+import CatalogueListViewComponent from '@components/CatalogueListView.component';
+import CatalogueGridViewComponent from '@components/CatalogueGridView.component';
+import CatalogueResponsiveFilterComponent, { FilterTagWithGroup, FilterValues } from '@components/CatalogueResponsiveFilter.component';
+import CatalogueItemDialogViewComponent from '@components/CatalogueItemDialogView.component';
+import CatalogueItemModel from '@models/CatalogueItem.model';
 
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -14,10 +14,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-import CatalogueItemRepository from '../../backend/repositories/CatalogueItem.repository';
+import CatalogueItemRepository from '@repos/CatalogueItem.repository';
 
-import sortByModes from '../../constants/SortModes.constants'
-import catalogueViewModes from '../../constants/CatalogueViewModes.constants'
+import sortByModes from '@constants/SortModes.constants'
+import catalogueViewModes from '@constants/CatalogueViewModes.constants'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

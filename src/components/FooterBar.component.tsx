@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import LinkedinIcon from '@material-ui/icons/LinkedIn';
 import GithubIcon from '@material-ui/icons/GitHub';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     footerContainer: {
@@ -32,7 +33,7 @@ export default function FooterBarComponent() {
                 </IconButton>
             </Box>
             <Box>
-                Copyright &copy; {new Date().getUTCFullYear()}
+                <Typography variant="body1">Copyright &copy; {new Date().getUTCFullYear()}</Typography>
             </Box>
         </Box>
     )
