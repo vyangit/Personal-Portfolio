@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import CatalogueItemModel from '@models/CatalogueItem.model'
 import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
 

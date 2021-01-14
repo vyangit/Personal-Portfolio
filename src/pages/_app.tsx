@@ -1,5 +1,6 @@
 // import App from "next/app";
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import '@styles/index.css';
 import '@styles/App.css';
 
@@ -11,6 +12,9 @@ import Box from '@material-ui/core/Box';
 
 import { createMuiTheme, ThemeProvider, ThemeOptions } from '@material-ui/core/styles';
 import { blue, red } from '@material-ui/core/colors';
+
+const lightFavicon = '/assets/favicons/v_favicon_light.ico';
+const darkFavicon = '/assets/favicons/v_favicon_dark.ico';
 
 const pages = new Array<Array<string>>();
 pages.push(['Home', '/']);
@@ -58,6 +62,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <link id="faviconTag" rel="icon" href={isDarkModeOn ? darkFavicon : lightFavicon} />
+      </Head>
       <div className="App" style={themeInjects}>
         <NavBarComponent
           currMenuItem={currPage}
