@@ -66,7 +66,7 @@ export default function HomePage(props: HomePageProps) {
                     </Box>
                     <Typography className={classes.intro} variant="h4" align="left">
                         I'm Victor Yan
-                        </Typography>
+                    </Typography>
                     <Typography className={classes.gist} variant="subtitle1" align="left">
                         A tech enthusiast and software developer located in Canada, looking for work across the globe and looking to share his own.
                         </Typography>

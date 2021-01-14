@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }));
 
 export default function CataloguePage() {
-    const theme = useTheme();
     const classes = useStyles();
 
     // States
