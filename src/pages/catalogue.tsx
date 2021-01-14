@@ -12,12 +12,13 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, useTheme } from '@material-ui/core/styles';
 
 import CatalogueItemRepository from '@repos/CatalogueItem.repository';
 
 import sortByModes from '@constants/SortModes.constants'
 import catalogueViewModes from '@constants/CatalogueViewModes.constants'
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -37,15 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
         }
     }));
 
-/**
- * Determines if the screen is less than the threshold width.
- * 
- * @returns True if screen width is less than 800 dp, else false
- */
-const isScreenSmall = (): boolean => {
-    return window.screen.width < 800
-}
-
 export default function CataloguePage() {
     const classes = useStyles();
 
@@ -56,23 +48,24 @@ export default function CataloguePage() {
         sortByMode: sortByModes[0],
         selectedFilterTags: []
     } as FilterValues);
-    const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(isScreenSmall());
+    const [showFilterAsFabFlag, setShowFilterAsFabFlag] = useState(false);
     const [catalogueItemDialogItem, setCatalogueItemDialogItem] = useState<CatalogueItemModel | null>(null);
     const [isCatalogueItemDialogOpen, setIsCatalogueItemDialogOpen] = useState(false);
 
     // Mutable block scope data
     let catalogueItems: Array<CatalogueItemModel> | null = null;
 
-    // Hooks
+    // After effects
     useEffect(() => {
+        let handleResize = () => {
+            setShowFilterAsFabFlag(window.innerWidth < 850);
+        }
         window.addEventListener('resize', handleResize);
-    });
+        handleResize()
+    }, []);
+
 
     // Handles
-    const handleResize = () => {
-        setShowFilterAsFabFlag(isScreenSmall());
-    }
-
     const handleSearch = (event: React.ChangeEvent<{ value: unknown }>) => {
         setSearchPhrase(event.target.value as string)
     }

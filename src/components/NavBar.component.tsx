@@ -20,7 +20,7 @@ const SignatureLogoDark = '/assets/svg/v_dark.svg';
 interface NavBarProps {
     onMenuItemClick: Function,
     currMenuItem: string,
-    menuItems: string[],
+    menuItems: Array<Array<string>>,
     isDarkModeOn?: boolean;
     toggleDarkMode?: Function
 }
@@ -64,12 +64,16 @@ export default function NavBarComponent(props: NavBarProps) {
 
     const renderMenuItems = () => {
         let menuItemElements = [];
-        for (let item of props.menuItems) {
+        let itemProps = props.menuItems;
+
+        for (let item of itemProps) {
+            let title = item[0];
+            let hrefValue = item[1];
             menuItemElements.push(
-                <MenuItem onClick={() => handleMenuItemClick(item)}>
-                    <NLink href="/">
+                <MenuItem onClick={() => handleMenuItemClick(title)} selected={title == props.currMenuItem}>
+                    <NLink href={hrefValue}>
                         <a className={navBarClasses.noUnderline}>
-                            {item}
+                            {title}
                         </a>
                     </NLink>
                 </MenuItem>

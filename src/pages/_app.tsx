@@ -1,30 +1,28 @@
 // import App from "next/app";
-import type { AppProps /*, AppContext */ } from 'next/app'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import '@styles/index.css';
 import '@styles/App.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBarComponent from '@components/NavBar.component'
 import FooterBarComponent from '@components/FooterBar.component';
-import HomePage from '.';
-import AppCataloguePage from './catalogue'
 
 import Box from '@material-ui/core/Box';
 
 import { createMuiTheme, ThemeProvider, ThemeOptions } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { blue, red } from '@material-ui/core/colors';
 
-const pages = [
-  'Home',
-  'App Catalogue'
-]
+const lightFavicon = '/assets/favicons/v_favicon_light.ico';
+const darkFavicon = '/assets/favicons/v_favicon_dark.ico';
 
-function MyApp({ Component, pageProps }: AppProps) {  
-  // Opt to not use useMediaQuery hook because of issues with first render not detecting scheme properly
-  const isDefaultDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
-  const [isDarkModeOn, setIsDarkModeOn] = useState(isDefaultDarkModeOn);
-  const [currPage, setCurrPage] = useState(pages[0]);
+const pages = new Array<Array<string>>();
+pages.push(['Home', '/']);
+pages.push(['App Catalogue', '/catalogue']);
+
+function MyApp({ Component, pageProps }: AppProps) {
+  const [isDarkModeOn, setIsDarkModeOn] = useState(false);
+  const [currPage, setCurrPage] = useState('Home');
   const themeStyle = isDarkModeOn ? {
     palette: {
       type: 'dark',
@@ -52,12 +50,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   const theme = createMuiTheme(themeStyle as ThemeOptions);
 
-  function handlePageChange(pageLabel: string) {
+  // After effect
+  useEffect(() => {
+    setIsDarkModeOn(window.matchMedia("(prefers-color-scheme: dark)").matches)
+  }, [])
+
+  // Handles
+  const handlePageChange = (pageLabel: string) => {
     setCurrPage(pageLabel);
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <link id="faviconTag" rel="icon" href={isDarkModeOn ? darkFavicon : lightFavicon} />
+      </Head>
       <div className="App" style={themeInjects}>
         <NavBarComponent
           currMenuItem={currPage}
@@ -66,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           isDarkModeOn={isDarkModeOn}
           toggleDarkMode={setIsDarkModeOn} />
         <Box display="flex" flexDirection="row" flexGrow={1} overflow="hidden">
-          <Component {...pageProps} />
+          <Component isDarkModeOn={isDarkModeOn} {...pageProps} />
         </Box>
         <FooterBarComponent />
       </div>

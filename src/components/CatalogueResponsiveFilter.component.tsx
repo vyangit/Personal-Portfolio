@@ -287,7 +287,7 @@ export default function CatalogueResponsiveFilterComponent(props: CatalogueRespo
                     <Autocomplete
                         multiple
                         disableCloseOnSelect
-                        classes={{inputRoot: classes.filterTagsRoot}}
+                        classes={{ inputRoot: classes.filterTagsRoot }}
                         size="small"
                         limitTags={3}
                         value={props.filterValues.selectedFilterTags}

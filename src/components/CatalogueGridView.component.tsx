@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CatalogueItemModel from '@models/CatalogueItem.model'
 import CatalogueItemDeviceSupportRowComponent from './CatalogueItemDeviceSupportRow.component';
 
@@ -12,14 +12,6 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 interface CatalogueGridViewComponentProps {
     items: Array<CatalogueItemModel>;
     onItemSelected?: Function;
-}
-
-const gridItemWidth = 300;
-
-const determineNumCols = () => {
-    let cols = Math.floor(window.screen.width / gridItemWidth);
-    if (cols < 1) cols = 1;
-    return cols;
 }
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -40,6 +32,19 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 export default function CatalogueGridViewComponent(props: CatalogueGridViewComponentProps) {
     const classes = useStyles();
+    const gridItemWidth = 300;
+    const [gridColCount, setGridColCount] = useState(1);
+
+    // After effects
+    useEffect(() => {
+        let determineAndSetGridColCount = () => {
+            let cols = Math.floor(window.innerWidth / gridItemWidth);
+            if (cols < 1) cols = 1;
+            setGridColCount(cols);
+        }
+        determineAndSetGridColCount()
+        window.addEventListener('resize', determineAndSetGridColCount);
+    }, []);
 
     const handleOnItemSelected = (item: CatalogueItemModel) => {
         if (props.onItemSelected !== undefined) {
@@ -68,7 +73,7 @@ export default function CatalogueGridViewComponent(props: CatalogueGridViewCompo
     }
 
     return (
-        <GridList cellHeight={200} cols={(determineNumCols())} className={classes.gridList}>
+        <GridList cellHeight={200} cols={gridColCount} className={classes.gridList}>
             {renderCatalogueItems()}
         </GridList>);
 }
