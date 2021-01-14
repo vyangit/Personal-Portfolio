@@ -15,16 +15,15 @@ import { createMuiTheme, ThemeProvider, ThemeOptions } from '@material-ui/core/s
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { blue, red } from '@material-ui/core/colors';
 
-const pages = [
-  'Home',
-  'App Catalogue'
-]
+const pages = new Array<Array<string>>();
+pages.push(['Home', '/']);
+pages.push(['App Catalogue', '/catalogue']);
 
 function MyApp({ Component, pageProps }: AppProps) {  
   // Opt to not use useMediaQuery hook because of issues with first render not detecting scheme properly
   const isDefaultDarkModeOn = useMediaQuery('(prefers-color-scheme: dark)');
   const [isDarkModeOn, setIsDarkModeOn] = useState(isDefaultDarkModeOn);
-  const [currPage, setCurrPage] = useState(pages[0]);
+  const [currPage, setCurrPage] = useState('Home');
   const themeStyle = isDarkModeOn ? {
     palette: {
       type: 'dark',
