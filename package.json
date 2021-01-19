@@ -6,7 +6,7 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
-    "export": "next export",
+    "export": "next build && next export",
     "preview": "next build && next export && cd ./out && http-server"
   },
   "dependencies": {
