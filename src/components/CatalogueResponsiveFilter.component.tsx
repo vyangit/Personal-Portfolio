@@ -207,7 +207,7 @@ export default function CatalogueResponsiveFilterComponent(props: CatalogueRespo
                         onChange={(_, value) => {
                             setFabDialogFilterTmpValues({
                                 ...fabDialogFilterTmpValues,
-                                selectedFilterTags: value
+                                selectedFilterTags: value as FilterTagWithGroup[]
                             })
                         }}
                         renderInput={(params) => (
@@ -295,7 +295,7 @@ export default function CatalogueResponsiveFilterComponent(props: CatalogueRespo
                         groupBy={(option) => option.group}
                         getOptionLabel={(option) => option.label}
                         getOptionSelected={(option, value) => option.label === value.label}
-                        onChange={(_, value) => { handleFilterTagsChange(value) }}
+                        onChange={(_, value) => { handleFilterTagsChange(value as FilterTagWithGroup[]) }}
                         renderInput={(params) => (
                             <TextField
                                 {...params}
